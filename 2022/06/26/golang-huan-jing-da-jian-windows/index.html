@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Golang环境搭建(windows), 破浪">
+    <meta name="keywords" content="Golang环境搭建(windows), 编程,PHP,Dart,Flutter,Python,Go,Java,JavaScript,Vue,React,Node,Hexo,博客,教程,学习,工作">
     <meta name="description" content="golang这个语言写起来还是很方便的，并且我最喜欢的一点就是可以打包成二进制，在不同的环境下直接运行，不需要各种复杂的环境，而且编译速度也极快，（之前写过一段时间rust，那个编译速度简直不堪入目）
 下载安装官网直接下载https://g">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -351,45 +351,45 @@
 <h2 id="下载安装"><a href="#下载安装" class="headerlink" title="下载安装"></a>下载安装</h2><p>官网直接下载<a target="_blank" rel="noopener" href="https://go.dev/">https://go.dev/</a></p>
 <p>至于安装，只需要下一步下一步就可以了，对于环境和一些SDK的安装，我习惯安装到默认位置</p>
 <p>安装完成之后，我们输入<code>go env</code>即可看到go当前的一些环境变量的配置，这里我们主要是修改一下go path的位置，我习惯所有代码文件都在一个workspace文件夹下面，进行不同语言的区分（其实这种分发有问题，有些项目涉及多种语言就尬了）</p>
-<pre class="line-numbers language-none"><code class="language-none">set GO111MODULE=
-set GOARCH=amd64
-set GOBIN=
-set GOCACHE=C:\Users\Ponull\AppData\Local\go-build
-set GOENV=C:\Users\Ponull\AppData\Roaming\go\env
-set GOEXE=.exe
-set GOEXPERIMENT=
-set GOFLAGS=
-set GOHOSTARCH=amd64
-set GOHOSTOS=windows
-set GOINSECURE=
-set GOMODCACHE=C:\Users\Ponull\go\pkg\mod
-set GONOPROXY=
-set GONOSUMDB=
-set GOOS=windows
-set GOPATH=C:\Users\Ponull\go
-set GOPRIVATE=
-set GOPROXY=https://proxy.golang.org,direct
-set GOROOT=C:\Program Files\Go
-set GOSUMDB=sum.golang.org
-set GOTMPDIR=
-set GOTOOLDIR=C:\Program Files\Go\pkg\tool\windows_amd64
-set GOVCS=
-set GOVERSION=go1.18.3
-set GCCGO=gccgo
-set GOAMD64=v1
-set AR=ar
-set CC=gcc
-set CXX=g++
-set CGO_ENABLED=1
-set GOMOD=NUL
-set GOWORK=
-set CGO_CFLAGS=-g -O2
-set CGO_CPPFLAGS=
-set CGO_CXXFLAGS=-g -O2
-set CGO_FFLAGS=-g -O2
-set CGO_LDFLAGS=-g -O2
-set PKG_CONFIG=pkg-config
-set GOGCCFLAGS=-m64 -mthreads -fno-caret-diagnostics -Qunused-arguments -fmessage-length=0 -fdebug-prefix-map=C:\Users\Shaum\AppData\Local\Temp\go-build3545789971=/tmp/go-build -gno-record-gcc-switches<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token builtin class-name">set</span> <span class="token assign-left variable">GO111MODULE</span><span class="token operator">=</span>
+<span class="token builtin class-name">set</span> <span class="token assign-left variable">GOARCH</span><span class="token operator">=</span>amd64
+<span class="token builtin class-name">set</span> <span class="token assign-left variable">GOBIN</span><span class="token operator">=</span>
+<span class="token builtin class-name">set</span> <span class="token assign-left variable">GOCACHE</span><span class="token operator">=</span>C:<span class="token punctuation">\</span>Users<span class="token punctuation">\</span>Ponull<span class="token punctuation">\</span>AppData<span class="token punctuation">\</span>Local<span class="token punctuation">\</span>go-build
+<span class="token builtin class-name">set</span> <span class="token assign-left variable">GOENV</span><span class="token operator">=</span>C:<span class="token punctuation">\</span>Users<span class="token punctuation">\</span>Ponull<span class="token punctuation">\</span>AppData<span class="token punctuation">\</span>Roaming<span class="token punctuation">\</span>go<span class="token punctuation">\</span>env
+<span class="token builtin class-name">set</span> <span class="token assign-left variable">GOEXE</span><span class="token operator">=</span>.exe
+<span class="token builtin class-name">set</span> <span class="token assign-left variable">GOEXPERIMENT</span><span class="token operator">=</span>
+<span class="token builtin class-name">set</span> <span class="token assign-left variable">GOFLAGS</span><span class="token operator">=</span>
+<span class="token builtin class-name">set</span> <span class="token assign-left variable">GOHOSTARCH</span><span class="token operator">=</span>amd64
+<span class="token builtin class-name">set</span> <span class="token assign-left variable">GOHOSTOS</span><span class="token operator">=</span>windows
+<span class="token builtin class-name">set</span> <span class="token assign-left variable">GOINSECURE</span><span class="token operator">=</span>
+<span class="token builtin class-name">set</span> <span class="token assign-left variable">GOMODCACHE</span><span class="token operator">=</span>C:<span class="token punctuation">\</span>Users<span class="token punctuation">\</span>Ponull<span class="token punctuation">\</span>go<span class="token punctuation">\</span>pkg<span class="token punctuation">\</span>mod
+<span class="token builtin class-name">set</span> <span class="token assign-left variable">GONOPROXY</span><span class="token operator">=</span>
+<span class="token builtin class-name">set</span> <span class="token assign-left variable">GONOSUMDB</span><span class="token operator">=</span>
+<span class="token builtin class-name">set</span> <span class="token assign-left variable">GOOS</span><span class="token operator">=</span>windows
+<span class="token builtin class-name">set</span> <span class="token assign-left variable">GOPATH</span><span class="token operator">=</span>C:<span class="token punctuation">\</span>Users<span class="token punctuation">\</span>Ponull<span class="token punctuation">\</span>go
+<span class="token builtin class-name">set</span> <span class="token assign-left variable">GOPRIVATE</span><span class="token operator">=</span>
+<span class="token builtin class-name">set</span> <span class="token assign-left variable">GOPROXY</span><span class="token operator">=</span>https://proxy.golang.org,direct
+<span class="token builtin class-name">set</span> <span class="token assign-left variable">GOROOT</span><span class="token operator">=</span>C:<span class="token punctuation">\</span>Program Files<span class="token punctuation">\</span>Go
+<span class="token builtin class-name">set</span> <span class="token assign-left variable">GOSUMDB</span><span class="token operator">=</span>sum.golang.org
+<span class="token builtin class-name">set</span> <span class="token assign-left variable">GOTMPDIR</span><span class="token operator">=</span>
+<span class="token builtin class-name">set</span> <span class="token assign-left variable">GOTOOLDIR</span><span class="token operator">=</span>C:<span class="token punctuation">\</span>Program Files<span class="token punctuation">\</span>Go<span class="token punctuation">\</span>pkg<span class="token punctuation">\</span>tool<span class="token punctuation">\</span>windows_amd64
+<span class="token builtin class-name">set</span> <span class="token assign-left variable">GOVCS</span><span class="token operator">=</span>
+<span class="token builtin class-name">set</span> <span class="token assign-left variable">GOVERSION</span><span class="token operator">=</span>go1.18.3
+<span class="token builtin class-name">set</span> <span class="token assign-left variable">GCCGO</span><span class="token operator">=</span>gccgo
+<span class="token builtin class-name">set</span> <span class="token assign-left variable">GOAMD64</span><span class="token operator">=</span>v1
+<span class="token builtin class-name">set</span> <span class="token assign-left variable">AR</span><span class="token operator">=</span>ar
+<span class="token builtin class-name">set</span> <span class="token assign-left variable">CC</span><span class="token operator">=</span>gcc
+<span class="token builtin class-name">set</span> <span class="token assign-left variable">CXX</span><span class="token operator">=</span>g++
+<span class="token builtin class-name">set</span> <span class="token assign-left variable">CGO_ENABLED</span><span class="token operator">=</span><span class="token number">1</span>
+<span class="token builtin class-name">set</span> <span class="token assign-left variable">GOMOD</span><span class="token operator">=</span>NUL
+<span class="token builtin class-name">set</span> <span class="token assign-left variable">GOWORK</span><span class="token operator">=</span>
+<span class="token builtin class-name">set</span> <span class="token assign-left variable">CGO_CFLAGS</span><span class="token operator">=</span>-g <span class="token parameter variable">-O2</span>
+<span class="token builtin class-name">set</span> <span class="token assign-left variable">CGO_CPPFLAGS</span><span class="token operator">=</span>
+<span class="token builtin class-name">set</span> <span class="token assign-left variable">CGO_CXXFLAGS</span><span class="token operator">=</span>-g <span class="token parameter variable">-O2</span>
+<span class="token builtin class-name">set</span> <span class="token assign-left variable">CGO_FFLAGS</span><span class="token operator">=</span>-g <span class="token parameter variable">-O2</span>
+<span class="token builtin class-name">set</span> <span class="token assign-left variable">CGO_LDFLAGS</span><span class="token operator">=</span>-g <span class="token parameter variable">-O2</span>
+<span class="token builtin class-name">set</span> <span class="token assign-left variable">PKG_CONFIG</span><span class="token operator">=</span>pkg-config
+<span class="token builtin class-name">set</span> <span class="token assign-left variable">GOGCCFLAGS</span><span class="token operator">=</span>-m64 <span class="token parameter variable">-mthreads</span> -fno-caret-diagnostics -Qunused-arguments -fmessage-length<span class="token operator">=</span><span class="token number">0</span> -fdebug-prefix-map<span class="token operator">=</span>C:<span class="token punctuation">\</span>Users<span class="token punctuation">\</span>Shaum<span class="token punctuation">\</span>AppData<span class="token punctuation">\</span>Local<span class="token punctuation">\</span>Temp<span class="token punctuation">\</span>go-build3545789971<span class="token operator">=</span>/tmp/go-build -gno-record-gcc-switches<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>配置GOPATH</p>
 <p>环境变量设置GOPATH就可以了，好像没啥说的，只是GOPATH下面配置好pkg,bin,src三个目录就好了</p>
@@ -399,56 +399,6 @@ set GOGCCFLAGS=-m64 -mthreads -fno-caret-diagnostics -Qunused-arguments -fmessag
             <hr/>
 
             
-
-    <div class="reprint" id="reprint-statement">
-        
-            <div class="reprint__author">
-                <span class="reprint-meta" style="font-weight: bold;">
-                    <i class="fas fa-user">
-                        文章作者:
-                    </i>
-                </span>
-                <span class="reprint-info">
-                    <a href="/about" rel="external nofollow noreferrer">Null Po</a>
-                </span>
-            </div>
-            <div class="reprint__type">
-                <span class="reprint-meta" style="font-weight: bold;">
-                    <i class="fas fa-link">
-                        文章链接:
-                    </i>
-                </span>
-                <span class="reprint-info">
-                    <a href="http://ponull.github.io/2022/06/26/golang-huan-jing-da-jian-windows/">http://ponull.github.io/2022/06/26/golang-huan-jing-da-jian-windows/</a>
-                </span>
-            </div>
-            <div class="reprint__notice">
-                <span class="reprint-meta" style="font-weight: bold;">
-                    <i class="fas fa-copyright">
-                        版权声明:
-                    </i>
-                </span>
-                <span class="reprint-info">
-                    本博客所有文章除特別声明外，均采用
-                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
-                    许可协议。转载请注明来源
-                    <a href="/about" target="_blank">Null Po</a>
-                    !
-                </span>
-            </div>
-        
-    </div>
-
-    <script async defer>
-      document.addEventListener("copy", function (e) {
-        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
-        M.toast({html: toastHTML})
-      });
-
-      function navToReprintStatement() {
-        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
-      }
-    </script>
 
 
 
@@ -706,7 +656,7 @@ set GOGCCFLAGS=-m64 -mthreads -fno-caret-diagnostics -Qunused-arguments -fmessag
             
                 <span id="year">2020-2023</span>
             
-            <a href="/about" target="_blank">Null Po</a>
+            <a href="/about" target="_blank">Ponull</a>
             |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
             |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
             

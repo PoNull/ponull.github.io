@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="PHP Cli模式下获取参数, 破浪">
+    <meta name="keywords" content="PHP Cli模式下获取参数, 编程,PHP,Dart,Flutter,Python,Go,Java,JavaScript,Vue,React,Node,Hexo,博客,教程,学习,工作">
     <meta name="description" content="作为一个PHPer，却一直嫌弃PHP，其实是自己不够了解PHP，除了异步，你们能做的PHP也能做到
 数组$argv例如我们执行一个php文件，需要参数（daemon=&amp;gt;true, domain=&amp;gt;”127.0.0.1”,port">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -349,17 +349,17 @@
             <div id="articleContent">
                 <p>作为一个PHPer，却一直嫌弃PHP，其实是自己不够了解PHP，除了异步，你们能做的PHP也能做到</p>
 <h2 id="数组-argv"><a href="#数组-argv" class="headerlink" title="数组$argv"></a>数组$argv</h2><p>例如我们执行一个php文件，需要参数（daemon=&gt;true, domain=&gt;”127.0.0.1”,port=&gt;8080）</p>
-<pre class="line-numbers language-none"><code class="language-none">print_r($argv);<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token function">print_r</span><span class="token punctuation">(</span><span class="token variable">$argv</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p>执行<code>php test.php true 127.0.0.1 8080</code></p>
 <p>得到（注意在终端输入的都是字符串）</p>
-<pre class="line-numbers language-none"><code class="language-none">Array
-(
-    [0] =&gt; test.php
-    [1] =&gt; true
-    [2] =&gt; 127.0.0.1
-    [3] =&gt; 8080
-)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">Array
+<span class="token punctuation">(</span>
+    <span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">=</span><span class="token operator">&gt;</span> test.php
+    <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">=</span><span class="token operator">&gt;</span> <span class="token boolean">true</span>
+    <span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span> <span class="token operator">=</span><span class="token operator">&gt;</span> <span class="token number">127.0</span>.0.1
+    <span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">]</span> <span class="token operator">=</span><span class="token operator">&gt;</span> <span class="token number">8080</span>
+<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>参数分析(可以看到argv[0]为当前执行的php文件名称，而argv[1]~argv[3]则是传递的参数的值)</p>
 <p>可以看到argv[0]为当前执行的php文件名称，而argv[1]~argv[3]则是传递的参数的值</p>
@@ -374,78 +374,78 @@
 <p>eg:</p>
 <p>执行 <code>php test.php 127.0.0.1 true 8080</code></p>
 <p>输出</p>
-<pre class="line-numbers language-none"><code class="language-none">Array
-(
-    [0] =&gt; test.php
-    [1] =&gt; 127.0.0.1
-    [2] =&gt; true
-    [3] =&gt; 8080
-)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">Array
+<span class="token punctuation">(</span>
+    <span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">=</span><span class="token operator">&gt;</span> test.php
+    <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">=</span><span class="token operator">&gt;</span> <span class="token number">127.0</span>.0.1
+    <span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span> <span class="token operator">=</span><span class="token operator">&gt;</span> <span class="token boolean">true</span>
+    <span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">]</span> <span class="token operator">=</span><span class="token operator">&gt;</span> <span class="token number">8080</span>
+<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>可以发现参数顺序变了，如果我们读取方式为</p>
-<pre class="line-numbers language-none"><code class="language-none">$daemon = $argv[1];
-$domain = $argv[2];
-$port = $argv[3];<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token variable">$daemon</span> <span class="token operator">=</span> <span class="token variable">$argv</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token variable">$domain</span> <span class="token operator">=</span> <span class="token variable">$argv</span><span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token variable">$port</span> <span class="token operator">=</span> <span class="token variable">$argv</span><span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 
 <p>那么读取出来就会出错。所以不推荐这种方式</p>
 <h2 id="系统方法getopt"><a href="#系统方法getopt" class="headerlink" title="系统方法getopt"></a>系统方法getopt</h2><p>getopt 从命令行参数列表中获取选项</p>
-<pre class="line-numbers language-none"><code class="language-none">function getopt(
-  string $short_options,
-  array $long_options = [],
-  &amp;$rest_index
-): arrayfalse {}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token keyword">function</span> <span class="token function-definition function">getopt</span><span class="token punctuation">(</span>
+  <span class="token keyword type-hint">string</span> <span class="token variable">$short_options</span><span class="token punctuation">,</span>
+  <span class="token keyword type-hint">array</span> <span class="token variable">$long_options</span> <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+  <span class="token operator">&amp;</span><span class="token variable">$rest_index</span>
+<span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token class-name return-type">arrayfalse</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <h3 id="使用short-options"><a href="#使用short-options" class="headerlink" title="使用short_options"></a>使用short_options</h3><p>a,b,c 为需要值<br>d 为可选值<br>e 为不接受值</p>
-<pre class="line-numbers language-none"><code class="language-none">$param = getopt('a:b:c:d::e');
-print_r($param);<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token variable">$param</span> <span class="token operator">=</span> <span class="token function">getopt</span><span class="token punctuation">(</span><span class="token string single-quoted-string">'a:b:c:d::e'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token function">print_r</span><span class="token punctuation">(</span><span class="token variable">$param</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
 <p>执行<code>php test.php -a 1 -b 2 -c 3 -d=4 -e 5</code></p>
 <p>输出</p>
-<pre class="line-numbers language-none"><code class="language-none">Array
-(
-    [a] =&gt; 1
-    [b] =&gt; 2
-    [c] =&gt; 3
-    [d] =&gt; 4
-    [e] =&gt;
-)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">Array
+<span class="token punctuation">(</span>
+    <span class="token punctuation">[</span>a<span class="token punctuation">]</span> <span class="token operator">=</span><span class="token operator">&gt;</span> <span class="token number">1</span>
+    <span class="token punctuation">[</span>b<span class="token punctuation">]</span> <span class="token operator">=</span><span class="token operator">&gt;</span> <span class="token number">2</span>
+    <span class="token punctuation">[</span>c<span class="token punctuation">]</span> <span class="token operator">=</span><span class="token operator">&gt;</span> <span class="token number">3</span>
+    <span class="token punctuation">[</span>d<span class="token punctuation">]</span> <span class="token operator">=</span><span class="token operator">&gt;</span> <span class="token number">4</span>
+    <span class="token punctuation">[</span>e<span class="token punctuation">]</span> <span class="token operator">=</span><span class="token operator">&gt;</span>
+<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>可以发现abc正常接收 可选值d也接受了，但是e传入的值直接被忽略了</p>
 <h3 id="使用long-options"><a href="#使用long-options" class="headerlink" title="使用long_options"></a>使用long_options</h3><p>type,is_hot 为需要值<br>limit 为可选值<br>expire 为不接受值</p>
-<pre class="line-numbers language-none"><code class="language-none">$longopt = array(
-    'type:',
-    'is_hot:',
-    'limit::',
-    'expire'
-);
-$param = getopt('', $longopt);
-print_r($param);<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token variable">$longopt</span> <span class="token operator">=</span> <span class="token keyword">array</span><span class="token punctuation">(</span>
+    <span class="token string single-quoted-string">'type:'</span><span class="token punctuation">,</span>
+    <span class="token string single-quoted-string">'is_hot:'</span><span class="token punctuation">,</span>
+    <span class="token string single-quoted-string">'limit::'</span><span class="token punctuation">,</span>
+    <span class="token string single-quoted-string">'expire'</span>
+<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token variable">$param</span> <span class="token operator">=</span> <span class="token function">getopt</span><span class="token punctuation">(</span><span class="token string single-quoted-string">''</span><span class="token punctuation">,</span> <span class="token variable">$longopt</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token function">print_r</span><span class="token punctuation">(</span><span class="token variable">$param</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>执行<code>php test.php --type news --is_hot 1 --limit=10 --expire=100</code></p>
 <p>输出</p>
-<pre class="line-numbers language-none"><code class="language-none">Array
-(
-    [type] =&gt; news
-    [is_hot] =&gt; 1
-    [limit] =&gt; 10
-    [expire] =&gt; 
-)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">Array
+<span class="token punctuation">(</span>
+    <span class="token punctuation">[</span>type<span class="token punctuation">]</span> <span class="token operator">=</span><span class="token operator">&gt;</span> news
+    <span class="token punctuation">[</span>is_hot<span class="token punctuation">]</span> <span class="token operator">=</span><span class="token operator">&gt;</span> <span class="token number">1</span>
+    <span class="token punctuation">[</span>limit<span class="token punctuation">]</span> <span class="token operator">=</span><span class="token operator">&gt;</span> <span class="token number">10</span>
+    <span class="token punctuation">[</span>expire<span class="token punctuation">]</span> <span class="token operator">=</span><span class="token operator">&gt;</span> 
+<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h3 id="找到第一非选项，后面忽略实例"><a href="#找到第一非选项，后面忽略实例" class="headerlink" title="找到第一非选项，后面忽略实例"></a>找到第一非选项，后面忽略实例</h3><pre class="line-numbers language-none"><code class="language-none">$longopt = array(
-    'type:',
-    'is_hot:',
-    'limit::',
-    'expire'
-);
-$param = getopt('', $longopt);
-print_r($param);<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="找到第一非选项，后面忽略实例"><a href="#找到第一非选项，后面忽略实例" class="headerlink" title="找到第一非选项，后面忽略实例"></a>找到第一非选项，后面忽略实例</h3><pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token variable">$longopt</span> <span class="token operator">=</span> <span class="token keyword">array</span><span class="token punctuation">(</span>
+    <span class="token string single-quoted-string">'type:'</span><span class="token punctuation">,</span>
+    <span class="token string single-quoted-string">'is_hot:'</span><span class="token punctuation">,</span>
+    <span class="token string single-quoted-string">'limit::'</span><span class="token punctuation">,</span>
+    <span class="token string single-quoted-string">'expire'</span>
+<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token variable">$param</span> <span class="token operator">=</span> <span class="token function">getopt</span><span class="token punctuation">(</span><span class="token string single-quoted-string">''</span><span class="token punctuation">,</span> <span class="token variable">$longopt</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token function">print_r</span><span class="token punctuation">(</span><span class="token variable">$param</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>执行<code>php test.php --type news --is_hots 1 --limit=10 --expire=100</code></p>
 <p>输出</p>
-<pre class="line-numbers language-none"><code class="language-none">Array
-(
-    [type] =&gt; news
-)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">Array
+<span class="token punctuation">(</span>
+    <span class="token punctuation">[</span>type<span class="token punctuation">]</span> <span class="token operator">=</span><span class="token operator">&gt;</span> news
+<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>因为is_hots不是选项值（定义的是is_hot），所以从这里开始之后的参数，都被丢弃。</p>
 <h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a><strong>总结</strong></h2><p>使用argv数组传参数，方法简单，实现方便。参数的顺序不能错，参数获取后需要做对应处理。<br>使用getopt方法，可使用参数名，参数顺序可随意，比较规范。（建议使用）</p>
@@ -456,56 +456,6 @@ print_r($param);<span aria-hidden="true" class="line-numbers-rows"><span></span>
             <hr/>
 
             
-
-    <div class="reprint" id="reprint-statement">
-        
-            <div class="reprint__author">
-                <span class="reprint-meta" style="font-weight: bold;">
-                    <i class="fas fa-user">
-                        文章作者:
-                    </i>
-                </span>
-                <span class="reprint-info">
-                    <a href="/about" rel="external nofollow noreferrer">Null Po</a>
-                </span>
-            </div>
-            <div class="reprint__type">
-                <span class="reprint-meta" style="font-weight: bold;">
-                    <i class="fas fa-link">
-                        文章链接:
-                    </i>
-                </span>
-                <span class="reprint-info">
-                    <a href="http://ponull.github.io/2022/05/27/php-cli-mo-shi-xia-huo-qu-can-shu/">http://ponull.github.io/2022/05/27/php-cli-mo-shi-xia-huo-qu-can-shu/</a>
-                </span>
-            </div>
-            <div class="reprint__notice">
-                <span class="reprint-meta" style="font-weight: bold;">
-                    <i class="fas fa-copyright">
-                        版权声明:
-                    </i>
-                </span>
-                <span class="reprint-info">
-                    本博客所有文章除特別声明外，均采用
-                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
-                    许可协议。转载请注明来源
-                    <a href="/about" target="_blank">Null Po</a>
-                    !
-                </span>
-            </div>
-        
-    </div>
-
-    <script async defer>
-      document.addEventListener("copy", function (e) {
-        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
-        M.toast({html: toastHTML})
-      });
-
-      function navToReprintStatement() {
-        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
-      }
-    </script>
 
 
 
@@ -763,7 +713,7 @@ print_r($param);<span aria-hidden="true" class="line-numbers-rows"><span></span>
             
                 <span id="year">2020-2023</span>
             
-            <a href="/about" target="_blank">Null Po</a>
+            <a href="/about" target="_blank">Ponull</a>
             |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
             |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
             

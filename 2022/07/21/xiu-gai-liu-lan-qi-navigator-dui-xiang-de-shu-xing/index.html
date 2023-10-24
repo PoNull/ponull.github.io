@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="修改浏览器Navigator对象的属性, 破浪">
+    <meta name="keywords" content="修改浏览器Navigator对象的属性, 编程,PHP,Dart,Flutter,Python,Go,Java,JavaScript,Vue,React,Node,Hexo,博客,教程,学习,工作">
     <meta name="description" content="最近做项目，需要绕过检测是否为手机用户，通过调试发现网页调用Navigator.platform进行了判定
 注入预执行js，直接修改值不生效，搜索发现，可通过Object.defineProperty进行设置
 Object.definePr">
@@ -350,66 +350,16 @@ Object.definePr">
             <div id="articleContent">
                 <p>最近做项目，需要绕过检测是否为手机用户，通过调试发现网页调用Navigator.platform进行了判定</p>
 <p>注入预执行js，直接修改值不生效，搜索发现，可通过Object.defineProperty进行设置</p>
-<pre class="line-numbers language-none"><code class="language-none">Object.defineProperty(navigator, 'platform', {
-    get: function () {
-        return 'linux arch64';
-    }
-});<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript">Object<span class="token punctuation">.</span><span class="token function">defineProperty</span><span class="token punctuation">(</span>navigator<span class="token punctuation">,</span> <span class="token string">'platform'</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
+    <span class="token function-variable function">get</span><span class="token operator">:</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token string">'linux arch64'</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
                 
             </div>
             <hr/>
 
             
-
-    <div class="reprint" id="reprint-statement">
-        
-            <div class="reprint__author">
-                <span class="reprint-meta" style="font-weight: bold;">
-                    <i class="fas fa-user">
-                        文章作者:
-                    </i>
-                </span>
-                <span class="reprint-info">
-                    <a href="/about" rel="external nofollow noreferrer">Null Po</a>
-                </span>
-            </div>
-            <div class="reprint__type">
-                <span class="reprint-meta" style="font-weight: bold;">
-                    <i class="fas fa-link">
-                        文章链接:
-                    </i>
-                </span>
-                <span class="reprint-info">
-                    <a href="http://ponull.github.io/2022/07/21/xiu-gai-liu-lan-qi-navigator-dui-xiang-de-shu-xing/">http://ponull.github.io/2022/07/21/xiu-gai-liu-lan-qi-navigator-dui-xiang-de-shu-xing/</a>
-                </span>
-            </div>
-            <div class="reprint__notice">
-                <span class="reprint-meta" style="font-weight: bold;">
-                    <i class="fas fa-copyright">
-                        版权声明:
-                    </i>
-                </span>
-                <span class="reprint-info">
-                    本博客所有文章除特別声明外，均采用
-                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
-                    许可协议。转载请注明来源
-                    <a href="/about" target="_blank">Null Po</a>
-                    !
-                </span>
-            </div>
-        
-    </div>
-
-    <script async defer>
-      document.addEventListener("copy", function (e) {
-        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
-        M.toast({html: toastHTML})
-      });
-
-      function navToReprintStatement() {
-        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
-      }
-    </script>
 
 
 
@@ -667,7 +617,7 @@ Object.definePr">
             
                 <span id="year">2020-2023</span>
             
-            <a href="/about" target="_blank">Null Po</a>
+            <a href="/about" target="_blank">Ponull</a>
             |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
             |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
             

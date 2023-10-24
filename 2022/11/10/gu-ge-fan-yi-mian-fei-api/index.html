@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="谷歌翻译免费api, 破浪">
+    <meta name="keywords" content="谷歌翻译免费api, 编程,PHP,Dart,Flutter,Python,Go,Java,JavaScript,Vue,React,Node,Hexo,博客,教程,学习,工作">
     <meta name="description" content="最近做的一个项目，需要将中文翻译的到英文，想白嫖，经过网上搜寻一波，发现google有免费api的提供
 请求地址https://translate.googleapis.com/translate\_a/single
 sl - 源语言代码（">
@@ -358,22 +358,22 @@ sl - 源语言代码（">
 <p>这里有一些dt的值。</p>
 <p>t - 源文本的翻译<br>at - 替代的翻译<br>rm - 源文本和翻译文本的转录/音译<br>bd - 词典，如果源文本是一个词的话（你可以得到带文章的翻译，反向翻译，等等）。<br>md - 源文本的定义，如果它是一个词的话<br>ss - 源文本的同义词，如果它是一个词的话<br>ex - 例子<br>rw - 参见列表</p>
 <p>贴出php执行代码，其他语言一样，简单的http请求而已</p>
-<pre class="line-numbers language-none"><code class="language-none">$http_client = new GuzzleHttp\Client();
-$res = $http_client-&gt;request('GET', 'https://translate.googleapis.com/translate_a/single', [
-    'verify' =&gt; false,
-    'headers' =&gt; [
-        'User-Agent' =&gt; 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.149 Safari/537.36',
-        'Accept-Encoding' =&gt; 'gzip',
-    ],
-    'query' =&gt; [
-            'client' =&gt; 'gtx',
-        'sl' =&gt; 'auto',
-        'tl' =&gt; 'zh-CH',
-        'dt' =&gt; 't',
-        'dj' =&gt; 1,
-        'q' =&gt; "Interface\ndisplay\noptimization",
-    ]
-]);<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token variable">$http_client</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name class-name-fully-qualified">GuzzleHttp<span class="token punctuation">\</span>Client</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token variable">$res</span> <span class="token operator">=</span> <span class="token variable">$http_client</span><span class="token operator">-&gt;</span><span class="token function">request</span><span class="token punctuation">(</span><span class="token string single-quoted-string">'GET'</span><span class="token punctuation">,</span> <span class="token string single-quoted-string">'https://translate.googleapis.com/translate_a/single'</span><span class="token punctuation">,</span> <span class="token punctuation">[</span>
+    <span class="token string single-quoted-string">'verify'</span> <span class="token operator">=&gt;</span> <span class="token constant boolean">false</span><span class="token punctuation">,</span>
+    <span class="token string single-quoted-string">'headers'</span> <span class="token operator">=&gt;</span> <span class="token punctuation">[</span>
+        <span class="token string single-quoted-string">'User-Agent'</span> <span class="token operator">=&gt;</span> <span class="token string single-quoted-string">'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.149 Safari/537.36'</span><span class="token punctuation">,</span>
+        <span class="token string single-quoted-string">'Accept-Encoding'</span> <span class="token operator">=&gt;</span> <span class="token string single-quoted-string">'gzip'</span><span class="token punctuation">,</span>
+    <span class="token punctuation">]</span><span class="token punctuation">,</span>
+    <span class="token string single-quoted-string">'query'</span> <span class="token operator">=&gt;</span> <span class="token punctuation">[</span>
+            <span class="token string single-quoted-string">'client'</span> <span class="token operator">=&gt;</span> <span class="token string single-quoted-string">'gtx'</span><span class="token punctuation">,</span>
+        <span class="token string single-quoted-string">'sl'</span> <span class="token operator">=&gt;</span> <span class="token string single-quoted-string">'auto'</span><span class="token punctuation">,</span>
+        <span class="token string single-quoted-string">'tl'</span> <span class="token operator">=&gt;</span> <span class="token string single-quoted-string">'zh-CH'</span><span class="token punctuation">,</span>
+        <span class="token string single-quoted-string">'dt'</span> <span class="token operator">=&gt;</span> <span class="token string single-quoted-string">'t'</span><span class="token punctuation">,</span>
+        <span class="token string single-quoted-string">'dj'</span> <span class="token operator">=&gt;</span> <span class="token number">1</span><span class="token punctuation">,</span>
+        <span class="token string single-quoted-string">'q'</span> <span class="token operator">=&gt;</span> <span class="token string double-quoted-string">"Interface\ndisplay\noptimization"</span><span class="token punctuation">,</span>
+    <span class="token punctuation">]</span>
+<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>参考链接: <a target="_blank" rel="noopener" href="https://wiki.freepascal.org/Using_Google_Translate">https://wiki.freepascal.org/Using_Google_Translate</a></p>
 
@@ -382,56 +382,6 @@ $res = $http_client-&gt;request('GET', 'https://translate.googleapis.com/transla
             <hr/>
 
             
-
-    <div class="reprint" id="reprint-statement">
-        
-            <div class="reprint__author">
-                <span class="reprint-meta" style="font-weight: bold;">
-                    <i class="fas fa-user">
-                        文章作者:
-                    </i>
-                </span>
-                <span class="reprint-info">
-                    <a href="/about" rel="external nofollow noreferrer">Null Po</a>
-                </span>
-            </div>
-            <div class="reprint__type">
-                <span class="reprint-meta" style="font-weight: bold;">
-                    <i class="fas fa-link">
-                        文章链接:
-                    </i>
-                </span>
-                <span class="reprint-info">
-                    <a href="http://ponull.github.io/2022/11/10/gu-ge-fan-yi-mian-fei-api/">http://ponull.github.io/2022/11/10/gu-ge-fan-yi-mian-fei-api/</a>
-                </span>
-            </div>
-            <div class="reprint__notice">
-                <span class="reprint-meta" style="font-weight: bold;">
-                    <i class="fas fa-copyright">
-                        版权声明:
-                    </i>
-                </span>
-                <span class="reprint-info">
-                    本博客所有文章除特別声明外，均采用
-                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
-                    许可协议。转载请注明来源
-                    <a href="/about" target="_blank">Null Po</a>
-                    !
-                </span>
-            </div>
-        
-    </div>
-
-    <script async defer>
-      document.addEventListener("copy", function (e) {
-        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
-        M.toast({html: toastHTML})
-      });
-
-      function navToReprintStatement() {
-        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
-      }
-    </script>
 
 
 
@@ -705,7 +655,7 @@ $res = $http_client-&gt;request('GET', 'https://translate.googleapis.com/transla
             
                 <span id="year">2020-2023</span>
             
-            <a href="/about" target="_blank">Null Po</a>
+            <a href="/about" target="_blank">Ponull</a>
             |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
             |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
             

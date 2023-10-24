@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="openwrt抓包, 破浪">
+    <meta name="keywords" content="openwrt抓包, 编程,PHP,Dart,Flutter,Python,Go,Java,JavaScript,Vue,React,Node,Hexo,博客,教程,学习,工作">
     <meta name="description" content="在OpenWrt路由下安装 tcpdumpopkg update
 opkg install tcpdump
 
@@ -349,11 +349,11 @@ opkg install tcpdump
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="在OpenWrt路由下安装-tcpdump"><a href="#在OpenWrt路由下安装-tcpdump" class="headerlink" title="在OpenWrt路由下安装 tcpdump"></a><strong>在OpenWrt路由下安装 tcpdump</strong></h2><pre class="line-numbers language-none"><code class="language-none">opkg update
-opkg install tcpdump<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+                <h2 id="在OpenWrt路由下安装-tcpdump"><a href="#在OpenWrt路由下安装-tcpdump" class="headerlink" title="在OpenWrt路由下安装 tcpdump"></a><strong>在OpenWrt路由下安装 tcpdump</strong></h2><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">opkg update
+opkg <span class="token function">install</span> tcpdump<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
 <h2 id="在电脑装wireshark-和plink-exe"><a href="#在电脑装wireshark-和plink-exe" class="headerlink" title="在电脑装wireshark 和plink.exe"></a><strong>在电脑装wireshark 和plink.exe</strong></h2><p>去这里下载这两个软件<br><a target="_blank" rel="noopener" href="https://www.wireshark.org/download.html">https://www.wireshark.org/download.html</a><br><a target="_blank" rel="noopener" href="http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html">http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html</a></p>
-<h2 id="路由下tcpdump抓包，PC端使用-wireshark-实时监听"><a href="#路由下tcpdump抓包，PC端使用-wireshark-实时监听" class="headerlink" title="路由下tcpdump抓包，PC端使用 wireshark 实时监听"></a><strong>路由下tcpdump抓包，PC端使用 wireshark 实时监听</strong></h2><pre class="line-numbers language-none"><code class="language-none">.\plink.exe -batch -ssh -pw 123456 root@10.0.0.1 "tcpdump -ni br-lan -s 0 -w - not port 22"  D:\devTools\Wireshark\wireshark.exe -k -i -<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h2 id="路由下tcpdump抓包，PC端使用-wireshark-实时监听"><a href="#路由下tcpdump抓包，PC端使用-wireshark-实时监听" class="headerlink" title="路由下tcpdump抓包，PC端使用 wireshark 实时监听"></a><strong>路由下tcpdump抓包，PC端使用 wireshark 实时监听</strong></h2><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">.<span class="token punctuation">\</span>plink.exe <span class="token parameter variable">-batch</span> <span class="token parameter variable">-ssh</span> <span class="token parameter variable">-pw</span> <span class="token number">123456</span> root@10.0.0.1 <span class="token string">"tcpdump -ni br-lan -s 0 -w - not port 22"</span>  D:<span class="token punctuation">\</span>devTools<span class="token punctuation">\</span>Wireshark<span class="token punctuation">\</span>wireshark.exe <span class="token parameter variable">-k</span> <span class="token parameter variable">-i</span> -<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <ul>
 <li><strong>root表示路由用户名</strong></li>
@@ -361,11 +361,11 @@ opkg install tcpdump<span aria-hidden="true" class="line-numbers-rows"><span></s
 <li><strong>10.0.0.1表示路由IP</strong></li>
 </ul>
 <p>cmd执行，别在powershell执行，我在powershell执行会提示和没有加-batch一样的提示</p>
-<p>请注意&nbsp;<strong>-batch</strong>&nbsp;参数,一定不能省,网上很多教程都是不带这个参数的,导致的结果wireshark可能会出现 “Data written to the pipe is neither in a supported pcap”,这是因为数据还有传输给wireshark的时候,wireshark就去读数据了,所以会造成数据错误,一直失败.</p>
+<p>请注意<strong>-batch</strong>参数,一定不能省,网上很多教程都是不带这个参数的,导致的结果wireshark可能会出现 “Data written to the pipe is neither in a supported pcap”,这是因为数据还有传输给wireshark的时候,wireshark就去读数据了,所以会造成数据错误,一直失败.</p>
 <h2 id="分析数据报文，获取敏感信息"><a href="#分析数据报文，获取敏感信息" class="headerlink" title="分析数据报文，获取敏感信息"></a><strong>分析数据报文，获取敏感信息</strong></h2><p>假如你使用了我的wifi，登录了百度的主页，我就获取你的登录cookies，<br>有了cookies可以不用密就能登录你的百度账号， 浏览你的各种百度云盘里面的内容。<br>wireshark 添加过滤的条件“http.cookie“， 获取cookies的相关报文，点中右键，follow tcp steam，看到完整的报文，<br>复制 http 请求时向服务器发送的cookies 字符串</p>
 <h2 id="注入cookies，登录账号"><a href="#注入cookies，登录账号" class="headerlink" title="注入cookies，登录账号"></a><strong>注入cookies，登录账号</strong></h2><p>chrome 下使用一个 CookieHacker的插件 ，下载 <a target="_blank" rel="noopener" href="http://evilcos.me/?p=366">http://evilcos.me/?p=366</a><br>打开 baidu.com，把cookies的字符串粘贴，点击inject cookie</p>
 <h2 id="附加福利"><a href="#附加福利" class="headerlink" title="附加福利"></a><strong>附加福利</strong></h2><p>下面这一条命令用于在OpenWrt路由器上直接保存dump的数据</p>
-<pre class="line-numbers language-none"><code class="language-none">/usr/sbin/tcpdump -ni br-lan not port 22 -s 0  -w  /mnt/sda3/tcpdump/net.cap<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">/usr/sbin/tcpdump <span class="token parameter variable">-ni</span> br-lan not port <span class="token number">22</span> <span class="token parameter variable">-s</span> <span class="token number">0</span>  <span class="token parameter variable">-w</span>  /mnt/sda3/tcpdump/net.cap<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a target="_blank" rel="noopener" href="https://www.bgegao.com/2020/02/1574.html">https://www.bgegao.com/2020/02/1574.html</a></p>
 
@@ -374,56 +374,6 @@ opkg install tcpdump<span aria-hidden="true" class="line-numbers-rows"><span></s
             <hr/>
 
             
-
-    <div class="reprint" id="reprint-statement">
-        
-            <div class="reprint__author">
-                <span class="reprint-meta" style="font-weight: bold;">
-                    <i class="fas fa-user">
-                        文章作者:
-                    </i>
-                </span>
-                <span class="reprint-info">
-                    <a href="/about" rel="external nofollow noreferrer">Null Po</a>
-                </span>
-            </div>
-            <div class="reprint__type">
-                <span class="reprint-meta" style="font-weight: bold;">
-                    <i class="fas fa-link">
-                        文章链接:
-                    </i>
-                </span>
-                <span class="reprint-info">
-                    <a href="http://ponull.github.io/2022/05/10/openwrt-zhua-bao/">http://ponull.github.io/2022/05/10/openwrt-zhua-bao/</a>
-                </span>
-            </div>
-            <div class="reprint__notice">
-                <span class="reprint-meta" style="font-weight: bold;">
-                    <i class="fas fa-copyright">
-                        版权声明:
-                    </i>
-                </span>
-                <span class="reprint-info">
-                    本博客所有文章除特別声明外，均采用
-                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
-                    许可协议。转载请注明来源
-                    <a href="/about" target="_blank">Null Po</a>
-                    !
-                </span>
-            </div>
-        
-    </div>
-
-    <script async defer>
-      document.addEventListener("copy", function (e) {
-        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
-        M.toast({html: toastHTML})
-      });
-
-      function navToReprintStatement() {
-        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
-      }
-    </script>
 
 
 
@@ -681,7 +631,7 @@ opkg install tcpdump<span aria-hidden="true" class="line-numbers-rows"><span></s
             
                 <span id="year">2020-2023</span>
             
-            <a href="/about" target="_blank">Null Po</a>
+            <a href="/about" target="_blank">Ponull</a>
             |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
             |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
             

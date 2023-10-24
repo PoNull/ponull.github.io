@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="安装Glances(centos), 破浪">
+    <meta name="keywords" content="安装Glances(centos), 编程,PHP,Dart,Flutter,Python,Go,Java,JavaScript,Vue,React,Node,Hexo,博客,教程,学习,工作">
     <meta name="description" content="glances是一个监控工具，好像是python写的
 概览功能
 CPU 信息（与用户相关的应用程序、系统核心程序和空闲程序。
@@ -367,39 +367,39 @@ CPU 信息（与用户相关的应用程序、系统核心程序和空闲程序�
 <p>epel是社区强烈打造的免费开源发行软件包版本库。</p>
 <p>EPEL，即Extra Packages for Enterprise Linux的简称，是为企业级Linux提供的一组高质量的额外软件包，包括但不限于Red Hat Enterprise Linux (RHEL), CentOS and Scientific Linux (SL), Oracle Enterprise Linux (OEL)。(关于 : EPEL)</p>
 <p>方法一：yum命令安装</p>
-<pre class="line-numbers language-none"><code class="language-none">yum install epel-release -y<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">yum <span class="token function">install</span> epel-release <span class="token parameter variable">-y</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p>方法二：手动安装</p>
 <p>针对系统架构选择相应的类型：<a target="_blank" rel="noopener" href="http://dl.fedoraproject.org/pub/epel/7/">http://dl.fedoraproject.org/pub/epel/7/</a>。我们使用的x86_64，就要进入该目录下寻找相应包，安装方法如下：</p>
-<pre class="line-numbers language-none"><code class="language-none"># rpm -ivh http://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># rpm -ivh http://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p>如果报冲突,可以把冲突的包删除</p>
-<pre class="line-numbers language-none"><code class="language-none">yum remove epel-release<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">yum remove epel-release<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p>或者：</p>
-<pre class="line-numbers language-none"><code class="language-none"># wget http://dl.fedoraproject.org/pub/epel/7/x86_64/e/epel-release-7-2.noarch.rpm
-# rpm -vih epel-release-7-2.noarch.rpm<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># wget http://dl.fedoraproject.org/pub/epel/7/x86_64/e/epel-release-7-2.noarch.rpm</span>
+<span class="token comment"># rpm -vih epel-release-7-2.noarch.rpm</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
 <p>更新数据</p>
-<pre class="line-numbers language-none"><code class="language-none">yum clean all &amp;&amp; yum makecache<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">yum clean all <span class="token operator">&amp;&amp;</span> yum makecache<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p>查看仓库多了下面一行，有一万多个包。</p>
-<pre class="line-numbers language-none"><code class="language-none">[root@hddcluster2 ~]# yum repolist
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token punctuation">[</span>root@hddcluster2 ~<span class="token punctuation">]</span><span class="token comment"># yum repolist</span>
 Loaded plugins: fastestmirror, langpacks
 Loading mirror speeds from cached hostfile
  * base: mirrors.cn99.com
  * epel: mirror01.idc.hinet.net
  * extras: mirrors.aliyun.com
  * updates: mirrors.cn99.com
-repo id               repo name                                           status
-base/7/x86_64         CentOS-7 - Base                                      9,363
-*epel/x86_64          Extra Packages for Enterprise Linux 7 - x86_64      11,018
-extras/7/x86_64       CentOS-7 - Extras                                      435
-updates/7/x86_64      CentOS-7 - Updates                                     418
-repolist: 21,234<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+repo <span class="token function">id</span>               repo name                                           status
+base/7/x86_64         CentOS-7 - Base                                      <span class="token number">9,363</span>
+*epel/x86_64          Extra Packages <span class="token keyword">for</span> Enterprise Linux <span class="token number">7</span> - x86_64      <span class="token number">11,018</span>
+extras/7/x86_64       CentOS-7 - Extras                                      <span class="token number">435</span>
+updates/7/x86_64      CentOS-7 - Updates                                     <span class="token number">418</span>
+repolist: <span class="token number">21,234</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>（2）安装glances工具</p>
-<pre class="line-numbers language-none"><code class="language-none">yum install glances -y<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">yum <span class="token function">install</span> glances <span class="token parameter variable">-y</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p><strong>3、使用glances</strong><br>直接执行galances命令</p>
 
@@ -408,56 +408,6 @@ repolist: 21,234<span aria-hidden="true" class="line-numbers-rows"><span></span>
             <hr/>
 
             
-
-    <div class="reprint" id="reprint-statement">
-        
-            <div class="reprint__author">
-                <span class="reprint-meta" style="font-weight: bold;">
-                    <i class="fas fa-user">
-                        文章作者:
-                    </i>
-                </span>
-                <span class="reprint-info">
-                    <a href="/about" rel="external nofollow noreferrer">Null Po</a>
-                </span>
-            </div>
-            <div class="reprint__type">
-                <span class="reprint-meta" style="font-weight: bold;">
-                    <i class="fas fa-link">
-                        文章链接:
-                    </i>
-                </span>
-                <span class="reprint-info">
-                    <a href="http://ponull.github.io/2022/07/01/an-zhuang-glancescentos/">http://ponull.github.io/2022/07/01/an-zhuang-glancescentos/</a>
-                </span>
-            </div>
-            <div class="reprint__notice">
-                <span class="reprint-meta" style="font-weight: bold;">
-                    <i class="fas fa-copyright">
-                        版权声明:
-                    </i>
-                </span>
-                <span class="reprint-info">
-                    本博客所有文章除特別声明外，均采用
-                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
-                    许可协议。转载请注明来源
-                    <a href="/about" target="_blank">Null Po</a>
-                    !
-                </span>
-            </div>
-        
-    </div>
-
-    <script async defer>
-      document.addEventListener("copy", function (e) {
-        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
-        M.toast({html: toastHTML})
-      });
-
-      function navToReprintStatement() {
-        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
-      }
-    </script>
 
 
 
@@ -715,7 +665,7 @@ repolist: 21,234<span aria-hidden="true" class="line-numbers-rows"><span></span>
             
                 <span id="year">2020-2023</span>
             
-            <a href="/about" target="_blank">Null Po</a>
+            <a href="/about" target="_blank">Ponull</a>
             |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
             |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
             

@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="php算法排列组合, 破浪">
+    <meta name="keywords" content="php算法排列组合, 编程,PHP,Dart,Flutter,Python,Go,Java,JavaScript,Vue,React,Node,Hexo,博客,教程,学习,工作">
     <meta name="description" content="最近需要用的php排列组合，之前写python的时候发现python有个itertools库，里面带了很多方便的迭代方法，无奈php没有，就在网上找了一下
 阶乘function factorial($n) {
     return arra">
@@ -349,135 +349,85 @@
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <p>最近需要用的php排列组合，之前写python的时候发现python有个itertools库，里面带了很多方便的迭代方法，无奈php没有，就在网上找了一下</p>
-<h2 id="阶乘"><a href="#阶乘" class="headerlink" title="阶乘"></a>阶乘</h2><pre class="line-numbers language-none"><code class="language-none">function factorial($n) {
-    return array_product(range(1, $n));
-}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<h2 id="阶乘"><a href="#阶乘" class="headerlink" title="阶乘"></a>阶乘</h2><pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token keyword">function</span> <span class="token function-definition function">factorial</span><span class="token punctuation">(</span><span class="token variable">$n</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token function">array_product</span><span class="token punctuation">(</span><span class="token function">range</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token variable">$n</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 
-<h2 id="排列数"><a href="#排列数" class="headerlink" title="排列数"></a>排列数</h2><pre class="line-numbers language-none"><code class="language-none">function A($n, $m) {
-    return factorial($n)/factorial($n-$m);
-}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<h2 id="排列数"><a href="#排列数" class="headerlink" title="排列数"></a>排列数</h2><pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token keyword">function</span> <span class="token function-definition function">A</span><span class="token punctuation">(</span><span class="token variable">$n</span><span class="token punctuation">,</span> <span class="token variable">$m</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token function">factorial</span><span class="token punctuation">(</span><span class="token variable">$n</span><span class="token punctuation">)</span><span class="token operator">/</span><span class="token function">factorial</span><span class="token punctuation">(</span><span class="token variable">$n</span><span class="token operator">-</span><span class="token variable">$m</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 
-<h2 id="组合数"><a href="#组合数" class="headerlink" title="组合数"></a>组合数</h2><pre class="line-numbers language-none"><code class="language-none">function C($n, $m) {
-    return A($n, $m)/factorial($m);
-}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<h2 id="组合数"><a href="#组合数" class="headerlink" title="组合数"></a>组合数</h2><pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token keyword">function</span> <span class="token function-definition function">C</span><span class="token punctuation">(</span><span class="token variable">$n</span><span class="token punctuation">,</span> <span class="token variable">$m</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token function">A</span><span class="token punctuation">(</span><span class="token variable">$n</span><span class="token punctuation">,</span> <span class="token variable">$m</span><span class="token punctuation">)</span><span class="token operator">/</span><span class="token function">factorial</span><span class="token punctuation">(</span><span class="token variable">$m</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 
-<h2 id="排列"><a href="#排列" class="headerlink" title="排列"></a>排列</h2><pre class="line-numbers language-none"><code class="language-none">function arrangement($a, $m) {
-    $r = array();
+<h2 id="排列"><a href="#排列" class="headerlink" title="排列"></a>排列</h2><pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token keyword">function</span> <span class="token function-definition function">arrangement</span><span class="token punctuation">(</span><span class="token variable">$a</span><span class="token punctuation">,</span> <span class="token variable">$m</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token variable">$r</span> <span class="token operator">=</span> <span class="token keyword">array</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
  
-    $n = count($a);
-    if ($m &lt;= 0  $m &gt; $n) {
-        return $r;
-    }
+    <span class="token variable">$n</span> <span class="token operator">=</span> <span class="token function">count</span><span class="token punctuation">(</span><span class="token variable">$a</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token variable">$m</span> <span class="token operator">&lt;=</span> <span class="token number">0</span>  <span class="token variable">$m</span> <span class="token operator">&gt;</span> <span class="token variable">$n</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token variable">$r</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
  
-    for ($i=0; $i&lt;$n; $i++) {
-        $b = $a;
-        $t = array_splice($b, $i, 1);
-        if ($m == 1) {
-            $r[] = $t;
-        } else {
-            $c = arrangement($b, $m-1);
-            foreach ($c as $v) {
-                $r[] = array_merge($t, $v);
-            }
-        }
-    }
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token variable">$i</span><span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span> <span class="token variable">$i</span><span class="token operator">&lt;</span><span class="token variable">$n</span><span class="token punctuation">;</span> <span class="token variable">$i</span><span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token variable">$b</span> <span class="token operator">=</span> <span class="token variable">$a</span><span class="token punctuation">;</span>
+        <span class="token variable">$t</span> <span class="token operator">=</span> <span class="token function">array_splice</span><span class="token punctuation">(</span><span class="token variable">$b</span><span class="token punctuation">,</span> <span class="token variable">$i</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token variable">$m</span> <span class="token operator">==</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token variable">$r</span><span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token variable">$t</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+            <span class="token variable">$c</span> <span class="token operator">=</span> <span class="token function">arrangement</span><span class="token punctuation">(</span><span class="token variable">$b</span><span class="token punctuation">,</span> <span class="token variable">$m</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">foreach</span> <span class="token punctuation">(</span><span class="token variable">$c</span> <span class="token keyword">as</span> <span class="token variable">$v</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                <span class="token variable">$r</span><span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">array_merge</span><span class="token punctuation">(</span><span class="token variable">$t</span><span class="token punctuation">,</span> <span class="token variable">$v</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
  
-    return $r;
-}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+    <span class="token keyword">return</span> <span class="token variable">$r</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h2 id="组合"><a href="#组合" class="headerlink" title="组合"></a>组合</h2><pre class="line-numbers language-none"><code class="language-none">function combination($a, $m) {
-    $r = array();
+<h2 id="组合"><a href="#组合" class="headerlink" title="组合"></a>组合</h2><pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token keyword">function</span> <span class="token function-definition function">combination</span><span class="token punctuation">(</span><span class="token variable">$a</span><span class="token punctuation">,</span> <span class="token variable">$m</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token variable">$r</span> <span class="token operator">=</span> <span class="token keyword">array</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
  
-    $n = count($a);
-    if ($m &lt;= 0  $m &gt; $n) {
-        return $r;
-    }
+    <span class="token variable">$n</span> <span class="token operator">=</span> <span class="token function">count</span><span class="token punctuation">(</span><span class="token variable">$a</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token variable">$m</span> <span class="token operator">&lt;=</span> <span class="token number">0</span>  <span class="token variable">$m</span> <span class="token operator">&gt;</span> <span class="token variable">$n</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token variable">$r</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
  
-    for ($i=0; $i&lt;$n; $i++) {
-        $t = array($a[$i]);
-        if ($m == 1) {
-            $r[] = $t;
-        } else {
-            $b = array_slice($a, $i+1);
-            $c = combination($b, $m-1);
-            foreach ($c as $v) {
-                $r[] = array_merge($t, $v);
-            }
-        }
-    }
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token variable">$i</span><span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span> <span class="token variable">$i</span><span class="token operator">&lt;</span><span class="token variable">$n</span><span class="token punctuation">;</span> <span class="token variable">$i</span><span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token variable">$t</span> <span class="token operator">=</span> <span class="token keyword">array</span><span class="token punctuation">(</span><span class="token variable">$a</span><span class="token punctuation">[</span><span class="token variable">$i</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token variable">$m</span> <span class="token operator">==</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token variable">$r</span><span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token variable">$t</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+            <span class="token variable">$b</span> <span class="token operator">=</span> <span class="token function">array_slice</span><span class="token punctuation">(</span><span class="token variable">$a</span><span class="token punctuation">,</span> <span class="token variable">$i</span><span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token variable">$c</span> <span class="token operator">=</span> <span class="token function">combination</span><span class="token punctuation">(</span><span class="token variable">$b</span><span class="token punctuation">,</span> <span class="token variable">$m</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">foreach</span> <span class="token punctuation">(</span><span class="token variable">$c</span> <span class="token keyword">as</span> <span class="token variable">$v</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                <span class="token variable">$r</span><span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">array_merge</span><span class="token punctuation">(</span><span class="token variable">$t</span><span class="token punctuation">,</span> <span class="token variable">$v</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
  
-    return $r;
-}
+    <span class="token keyword">return</span> <span class="token variable">$r</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
  <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h2 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h2><pre class="line-numbers language-none"><code class="language-none">$a = array("A", "B", "C", "D");
+<h2 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h2><pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token variable">$a</span> <span class="token operator">=</span> <span class="token keyword">array</span><span class="token punctuation">(</span><span class="token string double-quoted-string">"A"</span><span class="token punctuation">,</span> <span class="token string double-quoted-string">"B"</span><span class="token punctuation">,</span> <span class="token string double-quoted-string">"C"</span><span class="token punctuation">,</span> <span class="token string double-quoted-string">"D"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
  
-$r = arrangement($a, 2);
-var_dump($r);
+<span class="token variable">$r</span> <span class="token operator">=</span> <span class="token function">arrangement</span><span class="token punctuation">(</span><span class="token variable">$a</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token function">var_dump</span><span class="token punctuation">(</span><span class="token variable">$r</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
  
-$r = A(4, 2);
-echo $r."\n";
+<span class="token variable">$r</span> <span class="token operator">=</span> <span class="token function">A</span><span class="token punctuation">(</span><span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">echo</span> <span class="token variable">$r</span><span class="token operator">.</span><span class="token string double-quoted-string">"\n"</span><span class="token punctuation">;</span>
  
-$r = combination($a, 2);
-var_dump($r);
+<span class="token variable">$r</span> <span class="token operator">=</span> <span class="token function">combination</span><span class="token punctuation">(</span><span class="token variable">$a</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token function">var_dump</span><span class="token punctuation">(</span><span class="token variable">$r</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
  
-$r = C(4, 2);
-echo $r."\n";<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token variable">$r</span> <span class="token operator">=</span> <span class="token function">C</span><span class="token punctuation">(</span><span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">echo</span> <span class="token variable">$r</span><span class="token operator">.</span><span class="token string double-quoted-string">"\n"</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
                 
             </div>
             <hr/>
 
             
-
-    <div class="reprint" id="reprint-statement">
-        
-            <div class="reprint__author">
-                <span class="reprint-meta" style="font-weight: bold;">
-                    <i class="fas fa-user">
-                        文章作者:
-                    </i>
-                </span>
-                <span class="reprint-info">
-                    <a href="/about" rel="external nofollow noreferrer">Null Po</a>
-                </span>
-            </div>
-            <div class="reprint__type">
-                <span class="reprint-meta" style="font-weight: bold;">
-                    <i class="fas fa-link">
-                        文章链接:
-                    </i>
-                </span>
-                <span class="reprint-info">
-                    <a href="http://ponull.github.io/2022/05/23/php-suan-fa-pai-lie-zu-he/">http://ponull.github.io/2022/05/23/php-suan-fa-pai-lie-zu-he/</a>
-                </span>
-            </div>
-            <div class="reprint__notice">
-                <span class="reprint-meta" style="font-weight: bold;">
-                    <i class="fas fa-copyright">
-                        版权声明:
-                    </i>
-                </span>
-                <span class="reprint-info">
-                    本博客所有文章除特別声明外，均采用
-                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
-                    许可协议。转载请注明来源
-                    <a href="/about" target="_blank">Null Po</a>
-                    !
-                </span>
-            </div>
-        
-    </div>
-
-    <script async defer>
-      document.addEventListener("copy", function (e) {
-        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
-        M.toast({html: toastHTML})
-      });
-
-      function navToReprintStatement() {
-        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
-      }
-    </script>
 
 
 
@@ -755,7 +705,7 @@ echo $r."\n";<span aria-hidden="true" class="line-numbers-rows"><span></span><sp
             
                 <span id="year">2020-2023</span>
             
-            <a href="/about" target="_blank">Null Po</a>
+            <a href="/about" target="_blank">Ponull</a>
             |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
             |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
             

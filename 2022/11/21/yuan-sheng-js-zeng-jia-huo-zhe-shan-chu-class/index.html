@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="原生js增加或者删除class, 破浪">
+    <meta name="keywords" content="原生js增加或者删除class, 编程,PHP,Dart,Flutter,Python,Go,Java,JavaScript,Vue,React,Node,Hexo,博客,教程,学习,工作">
     <meta name="description" content="比较传统的方法var classVal = document.getElementById(&#34;id&#34;).getAttribute(&#34;class&#34;);
 
 //删除
@@ -349,19 +349,19 @@ classVal = classVal.replace(&#34;someClassN">
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="比较传统的方法"><a href="#比较传统的方法" class="headerlink" title="比较传统的方法"></a>比较传统的方法</h2><pre class="line-numbers language-none"><code class="language-none">var classVal = document.getElementById("id").getAttribute("class");
+                <h2 id="比较传统的方法"><a href="#比较传统的方法" class="headerlink" title="比较传统的方法"></a>比较传统的方法</h2><pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">var</span> classVal <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">"id"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getAttribute</span><span class="token punctuation">(</span><span class="token string">"class"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-//删除
-classVal = classVal.replace("someClassName","");
-document.getElementById("id").setAttribute("class",classVal );
+<span class="token comment">//删除</span>
+classVal <span class="token operator">=</span> classVal<span class="token punctuation">.</span><span class="token function">replace</span><span class="token punctuation">(</span><span class="token string">"someClassName"</span><span class="token punctuation">,</span><span class="token string">""</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">"id"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">setAttribute</span><span class="token punctuation">(</span><span class="token string">"class"</span><span class="token punctuation">,</span>classVal <span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-//添加
-classVal = classVal.concat(" someClassName");
-document.getElementById("id").setAttribute("class",classVal );
+<span class="token comment">//添加</span>
+classVal <span class="token operator">=</span> classVal<span class="token punctuation">.</span><span class="token function">concat</span><span class="token punctuation">(</span><span class="token string">" someClassName"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">"id"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">setAttribute</span><span class="token punctuation">(</span><span class="token string">"class"</span><span class="token punctuation">,</span>classVal <span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-//替换
-classVal = classVal.replace("someClassName","otherClassName");
-document.getElementById("id").setAttribute("class",classVal );<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token comment">//替换</span>
+classVal <span class="token operator">=</span> classVal<span class="token punctuation">.</span><span class="token function">replace</span><span class="token punctuation">(</span><span class="token string">"someClassName"</span><span class="token punctuation">,</span><span class="token string">"otherClassName"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">"id"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">setAttribute</span><span class="token punctuation">(</span><span class="token string">"class"</span><span class="token punctuation">,</span>classVal <span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <h2 id="html5增加了classList"><a href="#html5增加了classList" class="headerlink" title="html5增加了classList"></a>html5增加了classList</h2><p>classList 属性返回元素的类名，作为 DOMTokenList 对象。</p>
 <p>该属性用于在元素中添加，移除及切换 CSS 类。</p>
@@ -373,7 +373,7 @@ document.getElementById("id").setAttribute("class",classVal );<span aria-hidden=
 <li>remove(value) 从列表中删除类名</li>
 <li>toggle(value) 切换类名：如果列表中存在则删除，否则添加</li>
 </ul>
-<pre class="line-numbers language-none"><code class="language-none">增加：document.getElementById("myDIV").classList.add("mystyle",&nbsp;"anotherClass",&nbsp;"thirdClass");
+<pre class="line-numbers language-none"><code class="language-none">增加：document.getElementById("myDIV").classList.add("mystyle","anotherClass","thirdClass");
 
 去除：document.getElementById("myDIV").classList.remove("mystyle");<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 
@@ -386,56 +386,6 @@ document.getElementById("id").setAttribute("class",classVal );<span aria-hidden=
             <hr/>
 
             
-
-    <div class="reprint" id="reprint-statement">
-        
-            <div class="reprint__author">
-                <span class="reprint-meta" style="font-weight: bold;">
-                    <i class="fas fa-user">
-                        文章作者:
-                    </i>
-                </span>
-                <span class="reprint-info">
-                    <a href="/about" rel="external nofollow noreferrer">Null Po</a>
-                </span>
-            </div>
-            <div class="reprint__type">
-                <span class="reprint-meta" style="font-weight: bold;">
-                    <i class="fas fa-link">
-                        文章链接:
-                    </i>
-                </span>
-                <span class="reprint-info">
-                    <a href="http://ponull.github.io/2022/11/21/yuan-sheng-js-zeng-jia-huo-zhe-shan-chu-class/">http://ponull.github.io/2022/11/21/yuan-sheng-js-zeng-jia-huo-zhe-shan-chu-class/</a>
-                </span>
-            </div>
-            <div class="reprint__notice">
-                <span class="reprint-meta" style="font-weight: bold;">
-                    <i class="fas fa-copyright">
-                        版权声明:
-                    </i>
-                </span>
-                <span class="reprint-info">
-                    本博客所有文章除特別声明外，均采用
-                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
-                    许可协议。转载请注明来源
-                    <a href="/about" target="_blank">Null Po</a>
-                    !
-                </span>
-            </div>
-        
-    </div>
-
-    <script async defer>
-      document.addEventListener("copy", function (e) {
-        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
-        M.toast({html: toastHTML})
-      });
-
-      function navToReprintStatement() {
-        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
-      }
-    </script>
 
 
 
@@ -693,7 +643,7 @@ document.getElementById("id").setAttribute("class",classVal );<span aria-hidden=
             
                 <span id="year">2020-2023</span>
             
-            <a href="/about" target="_blank">Null Po</a>
+            <a href="/about" target="_blank">Ponull</a>
             |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
             |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
             

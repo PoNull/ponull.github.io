@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Openwrt的KMS服务，激活windows和office, 破浪">
+    <meta name="keywords" content="Openwrt的KMS服务，激活windows和office, 编程,PHP,Dart,Flutter,Python,Go,Java,JavaScript,Vue,React,Node,Hexo,博客,教程,学习,工作">
     <meta name="description" content="每次重装系统之后，都要在网上找激活密钥，大多不可用，费时费力，用破解软件又怕有后门，所有这里记录一下用openwrt的kms服务来激活，安全又方便
 激活windows卸载WINDOWS自带密钥slmgr /upk
 
@@ -350,9 +350,9 @@
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <p>每次重装系统之后，都要在网上找激活密钥，大多不可用，费时费力，用破解软件又怕有后门，所有这里记录一下用openwrt的kms服务来激活，安全又方便</p>
-<h2 id="激活windows"><a href="#激活windows" class="headerlink" title="激活windows"></a>激活windows</h2><h3 id="卸载WINDOWS自带密钥"><a href="#卸载WINDOWS自带密钥" class="headerlink" title="卸载WINDOWS自带密钥"></a>卸载WINDOWS自带密钥</h3><pre class="line-numbers language-none"><code class="language-none">slmgr /upk<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h2 id="激活windows"><a href="#激活windows" class="headerlink" title="激活windows"></a>激活windows</h2><h3 id="卸载WINDOWS自带密钥"><a href="#卸载WINDOWS自带密钥" class="headerlink" title="卸载WINDOWS自带密钥"></a>卸载WINDOWS自带密钥</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">slmgr /upk<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<h3 id="安装新密钥"><a href="#安装新密钥" class="headerlink" title="安装新密钥"></a>安装新密钥</h3><pre class="line-numbers language-none"><code class="language-none">slmgr /ipk W269N-WFGWX-YVC9B-4J6C9-T83GX<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h3 id="安装新密钥"><a href="#安装新密钥" class="headerlink" title="安装新密钥"></a>安装新密钥</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">slmgr /ipk W269N-WFGWX-YVC9B-4J6C9-T83GX<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p>常用Windows VL版KMS激活密钥列表：</p>
 <ul>
@@ -365,19 +365,19 @@
 <li>Win7企业版KMS： 33PXH-7Y6KF-2VJC9-XBBR8-HVTHH</li>
 </ul>
 <h3 id="修改服务地址"><a href="#修改服务地址" class="headerlink" title="修改服务地址"></a>修改服务地址</h3><p>你自己的openwrt 地址或者kms服务的地址</p>
-<pre class="line-numbers language-none"><code class="language-none">slmgr /skms 192.168.2.188<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">slmgr /skms <span class="token number">192.168</span>.2.188<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<h3 id="开始激活"><a href="#开始激活" class="headerlink" title="开始激活"></a>开始激活</h3><pre class="line-numbers language-none"><code class="language-none">slmgr /ato<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h3 id="开始激活"><a href="#开始激活" class="headerlink" title="开始激活"></a>开始激活</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">slmgr /ato<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <h2 id="激活Office"><a href="#激活Office" class="headerlink" title="激活Office"></a>激活Office</h2><h3 id="找到你的OFFICE目录"><a href="#找到你的OFFICE目录" class="headerlink" title="找到你的OFFICE目录"></a>找到你的OFFICE目录</h3><ul>
 <li>OFFICE 2016 32位版，目录为”C:\Program Files (x86)\Microsoft Office\Office16”</li>
 <li>OFFICE 2016 64位版, 目录为”C:\Program Files\Microsoft Office\Office16”</li>
 </ul>
-<h3 id="进入office目录"><a href="#进入office目录" class="headerlink" title="进入office目录"></a>进入office目录</h3><pre class="line-numbers language-none"><code class="language-none">cd “C:\Program Files (x86)\Microsoft Office\Office16”  #（双引号中对应你的实际目录）<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h3 id="进入office目录"><a href="#进入office目录" class="headerlink" title="进入office目录"></a>进入office目录</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token builtin class-name">cd</span> “C:<span class="token punctuation">\</span>Program Files <span class="token punctuation">(</span>x86<span class="token punctuation">)</span><span class="token punctuation">\</span>Microsoft Office<span class="token punctuation">\</span>Office16”  <span class="token comment">#（双引号中对应你的实际目录）</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<h3 id="切换验证地址"><a href="#切换验证地址" class="headerlink" title="切换验证地址"></a>切换验证地址</h3><pre class="line-numbers language-none"><code class="language-none">cscript ospp.vbs /sethst:192.168.2.188<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h3 id="切换验证地址"><a href="#切换验证地址" class="headerlink" title="切换验证地址"></a>切换验证地址</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">cscript ospp.vbs /sethst:192.168.2.188<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<h3 id="开始激活-1"><a href="#开始激活-1" class="headerlink" title="开始激活"></a>开始激活</h3><pre class="line-numbers language-none"><code class="language-none">cscript ospp.vbs /act<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h3 id="开始激活-1"><a href="#开始激活-1" class="headerlink" title="开始激活"></a>开始激活</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">cscript ospp.vbs /act<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <h3 id="提示没有licenses"><a href="#提示没有licenses" class="headerlink" title="提示没有licenses"></a>提示没有<strong>licenses</strong></h3><p>如果执行过程的时候提示<strong>No Office KMS licenses were found on the system</strong></p>
 <p><a target="_blank" rel="noopener" href="https://www.ponull.com/wp-content/uploads/2022/05/ALB8HBRNKZOZ_L9I68A.png"><img src="https://www.ponull.com/wp-content/uploads/2022/05/ALB8HBRNKZOZ_L9I68A.png"></a></p>
@@ -388,7 +388,7 @@
 <p>The Software Licensing Service reported that the license is not installed</p>
 <p>需要将零售版(Retail)转成批量授权版(VOL)</p>
 <p>如果你的Office2016安装在**Program Files(x86)**里,将下面的代码复制保存为.bat格式,然后运行</p>
-<pre class="line-numbers language-none"><code class="language-none">@echo off
+<pre class="line-numbers language-text" data-language="text"><code class="language-text">@echo off
 :ADMIN
 openfiles &gt;nul 2&gt;nul (
 echo Set UAC = CreateObject^("Shell.Application"^) &gt; "%temp%\getadmin.vbs"
@@ -457,7 +457,7 @@ echo.
 pause<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>如果你的Office2016安装在<strong>Program Files</strong>里,将下面的代码复制保存为.bat格式,然后运行</p>
-<pre class="line-numbers language-none"><code class="language-none">@echo off
+<pre class="line-numbers language-text" data-language="text"><code class="language-text">@echo off
 :ADMIN
 openfiles &gt;nul 2&gt;nul (
 echo Set UAC = CreateObject^("Shell.Application"^) &gt; "%temp%\getadmin.vbs"
@@ -525,21 +525,21 @@ echo Retail to Volume License conversion finished.
 echo.
 pause<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h4 id="ERROR-CODE-0x4004F00C解决办法"><a href="#ERROR-CODE-0x4004F00C解决办法" class="headerlink" title="ERROR CODE: 0x4004F00C解决办法"></a><strong>ERROR CODE: 0x4004F00C解决办法</strong></h4><pre class="line-numbers language-none"><code class="language-none">cscript ospp.vbs /dstatus<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h4 id="ERROR-CODE-0x4004F00C解决办法"><a href="#ERROR-CODE-0x4004F00C解决办法" class="headerlink" title="ERROR CODE: 0x4004F00C解决办法"></a><strong>ERROR CODE: 0x4004F00C解决办法</strong></h4><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">cscript ospp.vbs /dstatus<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p><a target="_blank" rel="noopener" href="https://www.ponull.com/wp-content/uploads/2022/05/LZHHS7P1@YP@NQHXI.png"><img src="https://www.ponull.com/wp-content/uploads/2022/05/LZHHS7P1@YP@NQHXI.png"></a></p>
 <p>查看，有许可证出现ERROR CODE: 0x4004F00C,删除这个(可能有多个),然后产品密钥重新添加</p>
 <p>移除产品密钥</p>
-<pre class="line-numbers language-none"><code class="language-none">cscript ospp.vbs /unpkey:XXXXX #XXXXX为后面的数字是密钥的最后5位<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">cscript ospp.vbs /unpkey:XXXXX <span class="token comment">#XXXXX为后面的数字是密钥的最后5位</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p><a target="_blank" rel="noopener" href="https://www.ponull.com/wp-content/uploads/2022/05/8HOW8LNV_K7MCEDBR1L.png"><img src="https://www.ponull.com/wp-content/uploads/2022/05/8HOW8LNV_K7MCEDBR1L.png"></a></p>
 <p>unpkey:XXXXX</p>
 <p>安装产品密匙</p>
-<pre class="line-numbers language-none"><code class="language-none">cscript ospp.vbs /inpkey:XQNVK-8JYDB-WJ9W3-YJ8YR-WFG99 #这个是我网上找到的Office Professional Plus 2016密匙,如不能用自己找密匙替换<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">cscript ospp.vbs /inpkey:XQNVK-8JYDB-WJ9W3-YJ8YR-WFG99 <span class="token comment">#这个是我网上找到的Office Professional Plus 2016密匙,如不能用自己找密匙替换</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p><a target="_blank" rel="noopener" href="https://www.ponull.com/wp-content/uploads/2022/05/OYL3CGCOY_HH6MGWFK.png"><img src="https://www.ponull.com/wp-content/uploads/2022/05/OYL3CGCOY_HH6MGWFK.png"></a></p>
 <p>inpkey:XQNVK-8JYDB-WJ9W3-YJ8YR-WFG99</p>
-<p>安装成功会提示<code>&lt;Product key installation successful&gt;</code>,再执行 <strong><code>cscript ospp.vbs /act</code></strong>&nbsp;即可激活Office</p>
+<p>安装成功会提示<code>&lt;Product key installation successful&gt;</code>,再执行 **<code>cscript ospp.vbs /act</code>**即可激活Office</p>
 <p><a target="_blank" rel="noopener" href="https://www.ponull.com/wp-content/uploads/2022/05/5J5GOJK2YLSLBCWM41MB.png"><img src="https://www.ponull.com/wp-content/uploads/2022/05/5J5GOJK2YLSLBCWM41MB.png"></a></p>
 <h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a target="_blank" rel="noopener" href="https://amahv.github.io/2020/07/13/ji-yu-openwrt-gu-jian-da-jian-kms-fu-wu-qi-ji-huo-windows-office/">https://amahv.github.io/2020/07/13/ji-yu-openwrt-gu-jian-da-jian-kms-fu-wu-qi-ji-huo-windows-office/</a></p>
 <p><a target="_blank" rel="noopener" href="https://0w0.pw/216.html">https://0w0.pw/216.html</a></p>
@@ -549,56 +549,6 @@ pause<span aria-hidden="true" class="line-numbers-rows"><span></span><span></spa
             <hr/>
 
             
-
-    <div class="reprint" id="reprint-statement">
-        
-            <div class="reprint__author">
-                <span class="reprint-meta" style="font-weight: bold;">
-                    <i class="fas fa-user">
-                        文章作者:
-                    </i>
-                </span>
-                <span class="reprint-info">
-                    <a href="/about" rel="external nofollow noreferrer">Null Po</a>
-                </span>
-            </div>
-            <div class="reprint__type">
-                <span class="reprint-meta" style="font-weight: bold;">
-                    <i class="fas fa-link">
-                        文章链接:
-                    </i>
-                </span>
-                <span class="reprint-info">
-                    <a href="http://ponull.github.io/2022/05/19/openwrt-de-kms-fu-wu-ji-huo-windows-he-office/">http://ponull.github.io/2022/05/19/openwrt-de-kms-fu-wu-ji-huo-windows-he-office/</a>
-                </span>
-            </div>
-            <div class="reprint__notice">
-                <span class="reprint-meta" style="font-weight: bold;">
-                    <i class="fas fa-copyright">
-                        版权声明:
-                    </i>
-                </span>
-                <span class="reprint-info">
-                    本博客所有文章除特別声明外，均采用
-                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
-                    许可协议。转载请注明来源
-                    <a href="/about" target="_blank">Null Po</a>
-                    !
-                </span>
-            </div>
-        
-    </div>
-
-    <script async defer>
-      document.addEventListener("copy", function (e) {
-        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
-        M.toast({html: toastHTML})
-      });
-
-      function navToReprintStatement() {
-        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
-      }
-    </script>
 
 
 
@@ -856,7 +806,7 @@ pause<span aria-hidden="true" class="line-numbers-rows"><span></span><span></spa
             
                 <span id="year">2020-2023</span>
             
-            <a href="/about" target="_blank">Null Po</a>
+            <a href="/about" target="_blank">Ponull</a>
             |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
             |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
             

@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="PHP HTTP客户端-Guzzle原理解析, 破浪">
+    <meta name="keywords" content="PHP HTTP客户端-Guzzle原理解析, 编程,PHP,Dart,Flutter,Python,Go,Java,JavaScript,Vue,React,Node,Hexo,博客,教程,学习,工作">
     <meta name="description" content="本文适合寻找PHP HTTP客户端库，或者对于Guzzle的使用和实现原理比较感兴趣的同学阅读，需要具备一定的PHP基础知识。
 背景在PHP后台开发过程中，经常会遇到模块间需要通过HTTP通信的情形。PHP语言本身只提供了socket操作的">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -366,62 +366,58 @@
                 <p>本文适合寻找PHP HTTP客户端库，或者对于Guzzle的使用和实现原理比较感兴趣的同学阅读，需要具备一定的PHP基础知识。</p>
 <h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>在PHP后台开发过程中，经常会遇到模块间需要通过HTTP通信的情形。PHP语言本身只提供了<a target="_blank" rel="noopener" href="https://so.csdn.net/so/search?q=socket&amp;spm=1001.2101.3001.7020">socket</a>操作的接口，并未提供HTTP相关操作的接口。许多现有的实现采用curl扩展充当HTTP Client与HTTP Server通信，但仍需自己封装curl的接口。有鉴于此，本文介绍一款流行的PHP HTTP Client客户端—Guzzle（<a target="_blank" rel="noopener" href="https://github.com/guzzle/guzzle/%EF%BC%89%E7%9A%84%E7%94%A8%E6%B3%95%EF%BC%8C%E6%B7%B1%E5%85%A5%E5%88%86%E6%9E%90%E5%85%B6%E5%BA%95%E5%B1%82%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86%E3%80%82">https://github.com/guzzle/guzzle/）的用法，深入分析其底层实现原理。</a></p>
 <h2 id="Guzzle用法"><a href="#Guzzle用法" class="headerlink" title="Guzzle用法"></a>Guzzle用法</h2><p>例如使用Guzzle访问<a href="http://www.baidu.com的代码：">http://www.baidu.com的代码：</a></p>
-<pre class="line-numbers language-none"><code class="language-none">&lt;?php
+<pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token variable">$client</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name class-name-fully-qualified"><span class="token punctuation">\</span>GuzzleHttp<span class="token punctuation">\</span>Client</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token variable">$response</span> <span class="token operator">=</span> <span class="token variable">$client</span><span class="token operator">-&gt;</span><span class="token function">request</span><span class="token punctuation">(</span><span class="token string single-quoted-string">'GET'</span><span class="token punctuation">,</span> <span class="token string single-quoted-string">'http://www.baidu.com'</span><span class="token punctuation">,</span> <span class="token punctuation">[</span>
+    <span class="token string double-quoted-string">"timeout"</span> <span class="token operator">=&gt;</span> <span class="token number">3000</span>
+<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
  
-$client = new \GuzzleHttp\Client();
-$response = $client-&gt;request('GET', 'http://www.baidu.com', [
-    "timeout" =&gt; 3000
-]);
- 
-echo $response-&gt;getStatusCode(), "\n";
-echo $response-&gt;getBody();<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token keyword">echo</span> <span class="token variable">$response</span><span class="token operator">-&gt;</span><span class="token function">getStatusCode</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token string double-quoted-string">"\n"</span><span class="token punctuation">;</span>
+<span class="token keyword">echo</span> <span class="token variable">$response</span><span class="token operator">-&gt;</span><span class="token function">getBody</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>接口封装是不是十分简单？只需要关心请求方法，目标url和请求的选项即可快速上手。同时，Guzzle还支持异步请求方式：</p>
-<pre class="line-numbers language-none"><code class="language-none">&lt;?php
+<pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token keyword">use</span> <span class="token package">GuzzleHttp<span class="token punctuation">\</span>Exception<span class="token punctuation">\</span>RequestException</span><span class="token punctuation">;</span>
+<span class="token keyword">use</span> <span class="token package">Psr<span class="token punctuation">\</span>Http<span class="token punctuation">\</span>Message<span class="token punctuation">\</span>ResponseInterface</span><span class="token punctuation">;</span>
  
-use GuzzleHttp\Exception\RequestException;
-use Psr\Http\Message\ResponseInterface;
- 
-$client = new \GuzzleHttp\Client();
-$promise = $client-&gt;requestAsync('GET', 'http://www.baidu.com');
-$promise-&gt;then(
-    function (ResponseInterface $res) {
-        echo $res-&gt;getStatusCode() . "\n";
-        echo $res-&gt;getBody();
-        return $res;
-    },
-    function (RequestException $e) {
-        echo $e-&gt;getMessage() . "\n";
-        echo $e-&gt;getRequest()-&gt;getMethod();
-    }
-)-&gt;wait();<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token variable">$client</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name class-name-fully-qualified"><span class="token punctuation">\</span>GuzzleHttp<span class="token punctuation">\</span>Client</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token variable">$promise</span> <span class="token operator">=</span> <span class="token variable">$client</span><span class="token operator">-&gt;</span><span class="token function">requestAsync</span><span class="token punctuation">(</span><span class="token string single-quoted-string">'GET'</span><span class="token punctuation">,</span> <span class="token string single-quoted-string">'http://www.baidu.com'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token variable">$promise</span><span class="token operator">-&gt;</span><span class="token function">then</span><span class="token punctuation">(</span>
+    <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token class-name type-declaration">ResponseInterface</span> <span class="token variable">$res</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">echo</span> <span class="token variable">$res</span><span class="token operator">-&gt;</span><span class="token function">getStatusCode</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">.</span> <span class="token string double-quoted-string">"\n"</span><span class="token punctuation">;</span>
+        <span class="token keyword">echo</span> <span class="token variable">$res</span><span class="token operator">-&gt;</span><span class="token function">getBody</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> <span class="token variable">$res</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token class-name type-declaration">RequestException</span> <span class="token variable">$e</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">echo</span> <span class="token variable">$e</span><span class="token operator">-&gt;</span><span class="token function">getMessage</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">.</span> <span class="token string double-quoted-string">"\n"</span><span class="token punctuation">;</span>
+        <span class="token keyword">echo</span> <span class="token variable">$e</span><span class="token operator">-&gt;</span><span class="token function">getRequest</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">-&gt;</span><span class="token function">getMethod</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">)</span><span class="token operator">-&gt;</span><span class="token function">wait</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>基于异步请求，Guzzle还实现了并发请求，关于Guzzle的具体使用方法可以参考其中文文档<a target="_blank" rel="noopener" href="http://guzzle-cn.readthedocs.io/zh/_CN/latest/index.html%E3%80%82">http://guzzle-cn.readthedocs.io/zh\_CN/latest/index.html。</a></p>
 <h2 id="Guzzle实现原理"><a href="#Guzzle实现原理" class="headerlink" title="Guzzle实现原理"></a>Guzzle实现原理</h2><h3 id="client构造"><a href="#client构造" class="headerlink" title="client构造"></a>client构造</h3><p>GuzzleHttp\Client类构造函数声明为：</p>
-<pre class="line-numbers language-none"><code class="language-none">public function __construct(array $config = [])<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function-definition function">__construct</span><span class="token punctuation">(</span><span class="token keyword type-hint">array</span> <span class="token variable">$config</span> <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p>$config配置使得用户可以根据需要配置一切可以配置的选项，包括allow_redirects、auth、connect_timeout、proxy等。除此之外，还可以自定义请求的处理函数handler，方便应用程序扩展，handler接口规范为：</p>
-<pre class="line-numbers language-none"><code class="language-none">function handler($request, array $options);<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token keyword">function</span> <span class="token function-definition function">handler</span><span class="token punctuation">(</span><span class="token variable">$request</span><span class="token punctuation">,</span> <span class="token keyword type-hint">array</span> <span class="token variable">$options</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p>处理成功时，接口返回Psr\Http\Message\ResponseInterface；失败时返回GuzzleHttp\Exception\RequestException异常。</p>
 <p>默认情形下，GuzzleHttp\HandlerStack::create会创建请求处理函数</p>
-<pre class="line-numbers language-none"><code class="language-none">public static function create(callable $handler = null)
-{
-    $stack = new self($handler ?: choose_handler());
-    $stack-&gt;push(Middleware::httpErrors(), 'http_errors');
-    $stack-&gt;push(Middleware::redirect(), 'allow_redirects');
-    $stack-&gt;push(Middleware::cookies(), 'cookies');
-    $stack-&gt;push(Middleware::prepareBody(), 'prepare_body');
+<pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">function</span> <span class="token function-definition function">create</span><span class="token punctuation">(</span><span class="token keyword type-hint">callable</span> <span class="token variable">$handler</span> <span class="token operator">=</span> <span class="token constant">null</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token variable">$stack</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token keyword">self</span><span class="token punctuation">(</span><span class="token variable">$handler</span> <span class="token operator">?</span><span class="token punctuation">:</span> <span class="token function">choose_handler</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token variable">$stack</span><span class="token operator">-&gt;</span><span class="token function">push</span><span class="token punctuation">(</span><span class="token class-name static-context">Middleware</span><span class="token operator">::</span><span class="token function">httpErrors</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token string single-quoted-string">'http_errors'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token variable">$stack</span><span class="token operator">-&gt;</span><span class="token function">push</span><span class="token punctuation">(</span><span class="token class-name static-context">Middleware</span><span class="token operator">::</span><span class="token function">redirect</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token string single-quoted-string">'allow_redirects'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token variable">$stack</span><span class="token operator">-&gt;</span><span class="token function">push</span><span class="token punctuation">(</span><span class="token class-name static-context">Middleware</span><span class="token operator">::</span><span class="token function">cookies</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token string single-quoted-string">'cookies'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token variable">$stack</span><span class="token operator">-&gt;</span><span class="token function">push</span><span class="token punctuation">(</span><span class="token class-name static-context">Middleware</span><span class="token operator">::</span><span class="token function">prepareBody</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token string single-quoted-string">'prepare_body'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
  
-    return $stack;
-}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+    <span class="token keyword">return</span> <span class="token variable">$stack</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>create函数以堆栈的形式创建了一系列的处理函数，包括http异常、重定向、cookie和prepare_body。处理函数返回的函数闭包为：</p>
-<pre class="line-numbers language-none"><code class="language-none">return function (callable $handler) {
-    return function ($request, array $options) use ($handler) {
-        ...
-    };
-};<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token keyword">return</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token keyword type-hint">callable</span> <span class="token variable">$handler</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token variable">$request</span><span class="token punctuation">,</span> <span class="token keyword type-hint">array</span> <span class="token variable">$options</span><span class="token punctuation">)</span> <span class="token keyword">use</span> <span class="token punctuation">(</span><span class="token variable">$handler</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token operator">...</span>
+    <span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>函数入参为handler，返回一个新的handler，这样可以将所有的处理函数链接在一起，最终生成一个符合handler接口规范的函数.</p>
 <p>choose_handler函数选择stack中的起始handler，选择策略为：</p>
@@ -430,62 +426,62 @@ $promise-&gt;then(
 <li>扩展只有curl_exec函数则使用CurlHandler</li>
 <li>扩展只有curl_multi_exec函数则使用CurlMultiHandler</li>
 </ul>
-<pre class="line-numbers language-none"><code class="language-none">/**
+<pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token comment">/**
  * Chooses and creates a default handler to use based on the environment.
  *
  * The returned handler is not wrapped by any default middlewares.
  *
  * @return callable Returns the best handler for the given system.
  * @throws \RuntimeException if no viable Handler is available.
- */
-function choose_handler()
-{
-    $handler = null;
-    if (function_exists('curl_multi_exec') &amp;&amp; function_exists('curl_exec')) {
-        $handler = Proxy::wrapSync(new CurlMultiHandler(), new CurlHandler());
-    } elseif (function_exists('curl_exec')) {
-        $handler = new CurlHandler();
-    } elseif (function_exists('curl_multi_exec')) {
-        $handler = new CurlMultiHandler();
-    }
+ */</span>
+<span class="token keyword">function</span> <span class="token function-definition function">choose_handler</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token variable">$handler</span> <span class="token operator">=</span> <span class="token constant">null</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">function_exists</span><span class="token punctuation">(</span><span class="token string single-quoted-string">'curl_multi_exec'</span><span class="token punctuation">)</span> <span class="token operator">&amp;&amp;</span> <span class="token function">function_exists</span><span class="token punctuation">(</span><span class="token string single-quoted-string">'curl_exec'</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token variable">$handler</span> <span class="token operator">=</span> <span class="token class-name static-context">Proxy</span><span class="token operator">::</span><span class="token function">wrapSync</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">CurlMultiHandler</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token keyword">new</span> <span class="token class-name">CurlHandler</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span> <span class="token keyword">elseif</span> <span class="token punctuation">(</span><span class="token function">function_exists</span><span class="token punctuation">(</span><span class="token string single-quoted-string">'curl_exec'</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token variable">$handler</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">CurlHandler</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span> <span class="token keyword">elseif</span> <span class="token punctuation">(</span><span class="token function">function_exists</span><span class="token punctuation">(</span><span class="token string single-quoted-string">'curl_multi_exec'</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token variable">$handler</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">CurlMultiHandler</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
 
-    if (ini_get('allow_url_fopen')) {
-        $handler = $handler
-            ? Proxy::wrapStreaming($handler, new StreamHandler())
-            : new StreamHandler();
-    } elseif (!$handler) {
-        throw new \RuntimeException('GuzzleHttp requires cURL, the '
-            . 'allow_url_fopen ini setting, or a custom HTTP handler.');
-    }
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">ini_get</span><span class="token punctuation">(</span><span class="token string single-quoted-string">'allow_url_fopen'</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token variable">$handler</span> <span class="token operator">=</span> <span class="token variable">$handler</span>
+            <span class="token operator">?</span> <span class="token class-name static-context">Proxy</span><span class="token operator">::</span><span class="token function">wrapStreaming</span><span class="token punctuation">(</span><span class="token variable">$handler</span><span class="token punctuation">,</span> <span class="token keyword">new</span> <span class="token class-name">StreamHandler</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+            <span class="token punctuation">:</span> <span class="token keyword">new</span> <span class="token class-name">StreamHandler</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span> <span class="token keyword">elseif</span> <span class="token punctuation">(</span><span class="token operator">!</span><span class="token variable">$handler</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name class-name-fully-qualified"><span class="token punctuation">\</span>RuntimeException</span><span class="token punctuation">(</span><span class="token string single-quoted-string">'GuzzleHttp requires cURL, the '</span>
+            <span class="token operator">.</span> <span class="token string single-quoted-string">'allow_url_fopen ini setting, or a custom HTTP handler.'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
 
-    return $handler;
-}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+    <span class="token keyword">return</span> <span class="token variable">$handler</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>最后，如果php.ini中开启了allow_url_fopen，则根据$options中的stream选项决定，empty(stream)为false则使用StreamHandler。</p>
 <h3 id="client调用request方法"><a href="#client调用request方法" class="headerlink" title="client调用request方法"></a>client调用request方法</h3><p>request方法实现为：</p>
-<pre class="line-numbers language-none"><code class="language-none">public function request($method, $uri = '', array $options = [])
-{
-    $options[RequestOptions::SYNCHRONOUS] = true;
-    return $this-&gt;requestAsync($method, $uri, $options)-&gt;wait();
-}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function-definition function">request</span><span class="token punctuation">(</span><span class="token variable">$method</span><span class="token punctuation">,</span> <span class="token variable">$uri</span> <span class="token operator">=</span> <span class="token string single-quoted-string">''</span><span class="token punctuation">,</span> <span class="token keyword type-hint">array</span> <span class="token variable">$options</span> <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token variable">$options</span><span class="token punctuation">[</span><span class="token class-name static-context">RequestOptions</span><span class="token operator">::</span><span class="token constant">SYNCHRONOUS</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token constant boolean">true</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> <span class="token variable">$this</span><span class="token operator">-&gt;</span><span class="token function">requestAsync</span><span class="token punctuation">(</span><span class="token variable">$method</span><span class="token punctuation">,</span> <span class="token variable">$uri</span><span class="token punctuation">,</span> <span class="token variable">$options</span><span class="token punctuation">)</span><span class="token operator">-&gt;</span><span class="token function">wait</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>由此可见，<strong>request事实上是采用了requestAsync异步方法+wait来完成的，也就是异步转同步。</strong></p>
 <h4 id="requestAsync"><a href="#requestAsync" class="headerlink" title="requestAsync"></a>requestAsync</h4><p>requestAsync将请求信息包装成Psr7\Request对象，然后调用</p>
-<pre class="line-numbers language-none"><code class="language-none">transfer(RequestInterface $request, array $options)<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token function">transfer</span><span class="token punctuation">(</span><span class="token class-name type-declaration">RequestInterface</span> <span class="token variable">$request</span><span class="token punctuation">,</span> <span class="token keyword type-hint">array</span> <span class="token variable">$options</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p>transfer函数最终返回Promise\promise_for($handler($request, $options)); 其中$handler即为构造函数中所设置的stack，stack中存放一系列的请求处理函数。 HandlerStack的处理函数为:</p>
-<pre class="line-numbers language-none"><code class="language-none">public function __invoke(RequestInterface $request, array $options)
-{
-    $handler = $this-&gt;resolve();
+<pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function-definition function">__invoke</span><span class="token punctuation">(</span><span class="token class-name type-declaration">RequestInterface</span> <span class="token variable">$request</span><span class="token punctuation">,</span> <span class="token keyword type-hint">array</span> <span class="token variable">$options</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token variable">$handler</span> <span class="token operator">=</span> <span class="token variable">$this</span><span class="token operator">-&gt;</span><span class="token function">resolve</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
  
-    return $handler($request, $options);
-}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+    <span class="token keyword">return</span> <span class="token variable">$handler</span><span class="token punctuation">(</span><span class="token variable">$request</span><span class="token punctuation">,</span> <span class="token variable">$options</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>注意: 这里也能说明自己的PHP基础已经忘得差不多了，最开始阅读源码的时候<strong>__invoke</strong>这个方法，只能想起来是一个魔术方法，没有想到是干什么用的，在这里迷惑了好久。就在想为什么这个类能被当作方法使用。</p>
 <p>resolve方法解析整个stack，返回一个包装后的handler，包装策略为按照出栈顺序包装，也就是</p>
-<pre class="line-numbers language-none"><code class="language-none">foreach (array_reverse($this-&gt;stack) as $fn) {
-    $prev = $fn[0]($prev);
-}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token keyword">foreach</span> <span class="token punctuation">(</span><span class="token function">array_reverse</span><span class="token punctuation">(</span><span class="token variable">$this</span><span class="token operator">-&gt;</span><span class="token property">stack</span><span class="token punctuation">)</span> <span class="token keyword">as</span> <span class="token variable">$fn</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token variable">$prev</span> <span class="token operator">=</span> <span class="token variable">$fn</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">(</span><span class="token variable">$prev</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 
 <p>典型的中间件模型，所有的处理函数串接在一起了。请求经由http_errors、allow_redirects等处理之后到达Curl，执行真正的网络交互。</p>
 <ul>
@@ -494,21 +490,21 @@ function choose_handler()
 </ul>
 <p>Curl Handler处理完成之后，往上回溯，在Allow_redirects和Http_errors部分会进入then方法，最终返回的结果都是promise对象。</p>
 <p>返回的第一个handler其实就是choose_handler所返回的Curl Handler对象，跟踪发现__invoke方法</p>
-<pre class="line-numbers language-none"><code class="language-none">public function __invoke(RequestInterface $request, array $options)
-{
-    if (isset($options['delay'])) {
-        usleep($options['delay'] * 1000);
-    }
+<pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function-definition function">__invoke</span><span class="token punctuation">(</span><span class="token class-name type-declaration">RequestInterface</span> <span class="token variable">$request</span><span class="token punctuation">,</span> <span class="token keyword type-hint">array</span> <span class="token variable">$options</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">isset</span><span class="token punctuation">(</span><span class="token variable">$options</span><span class="token punctuation">[</span><span class="token string single-quoted-string">'delay'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token function">usleep</span><span class="token punctuation">(</span><span class="token variable">$options</span><span class="token punctuation">[</span><span class="token string single-quoted-string">'delay'</span><span class="token punctuation">]</span> <span class="token operator">*</span> <span class="token number">1000</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
 
-    $easy = $this-&gt;factory-&gt;create($request, $options);
-    curl_exec($easy-&gt;handle);
-    $easy-&gt;errno = curl_errno($easy-&gt;handle);
+    <span class="token variable">$easy</span> <span class="token operator">=</span> <span class="token variable">$this</span><span class="token operator">-&gt;</span><span class="token property">factory</span><span class="token operator">-&gt;</span><span class="token function">create</span><span class="token punctuation">(</span><span class="token variable">$request</span><span class="token punctuation">,</span> <span class="token variable">$options</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">curl_exec</span><span class="token punctuation">(</span><span class="token variable">$easy</span><span class="token operator">-&gt;</span><span class="token property">handle</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token variable">$easy</span><span class="token operator">-&gt;</span><span class="token property">errno</span> <span class="token operator">=</span> <span class="token function">curl_errno</span><span class="token punctuation">(</span><span class="token variable">$easy</span><span class="token operator">-&gt;</span><span class="token property">handle</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-    return CurlFactory::finish($this, $easy, $this-&gt;factory);
-}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+    <span class="token keyword">return</span> <span class="token class-name static-context">CurlFactory</span><span class="token operator">::</span><span class="token function">finish</span><span class="token punctuation">(</span><span class="token variable">$this</span><span class="token punctuation">,</span> <span class="token variable">$easy</span><span class="token punctuation">,</span> <span class="token variable">$this</span><span class="token operator">-&gt;</span><span class="token property">factory</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>这里发现只有curl_exec方法，平时我们使用的时候都是curl_exec直接拿到请求的值了，这里为什么没有呢，进入CurlFactory的finish方法发现最终是使用的**$easy**-&gt;response</p>
-<pre class="line-numbers language-none"><code class="language-none">/**
+<pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token comment">/**
  * Completes a cURL transaction, either returning a response promise or a
  * rejected promise.
  *
@@ -517,62 +513,62 @@ function choose_handler()
  * @param CurlFactoryInterface $factory Dictates how the handle is released
  *
  * @return \GuzzleHttp\Promise\PromiseInterface
- */
-public static function finish(
-    callable $handler,
-    EasyHandle $easy,
-    CurlFactoryInterface $factory
-) {
-    if (isset($easy-&gt;options['on_stats'])) {
-        self::invokeStats($easy);
-    }
+ */</span>
+<span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">function</span> <span class="token function-definition function">finish</span><span class="token punctuation">(</span>
+    <span class="token keyword type-hint">callable</span> <span class="token variable">$handler</span><span class="token punctuation">,</span>
+    <span class="token class-name type-declaration">EasyHandle</span> <span class="token variable">$easy</span><span class="token punctuation">,</span>
+    <span class="token class-name type-declaration">CurlFactoryInterface</span> <span class="token variable">$factory</span>
+<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">isset</span><span class="token punctuation">(</span><span class="token variable">$easy</span><span class="token operator">-&gt;</span><span class="token property">options</span><span class="token punctuation">[</span><span class="token string single-quoted-string">'on_stats'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword static-context">self</span><span class="token operator">::</span><span class="token function">invokeStats</span><span class="token punctuation">(</span><span class="token variable">$easy</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
 
-    if (!$easy-&gt;response  $easy-&gt;errno) {
-        return self::finishError($handler, $easy, $factory);
-    }
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span><span class="token variable">$easy</span><span class="token operator">-&gt;</span><span class="token class-name type-declaration">response</span>  <span class="token variable">$easy</span><span class="token operator">-&gt;</span><span class="token property">errno</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token keyword static-context">self</span><span class="token operator">::</span><span class="token function">finishError</span><span class="token punctuation">(</span><span class="token variable">$handler</span><span class="token punctuation">,</span> <span class="token variable">$easy</span><span class="token punctuation">,</span> <span class="token variable">$factory</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
 
-    // Return the response if it is present and there is no error.
-    $factory-&gt;release($easy);
+    <span class="token comment">// Return the response if it is present and there is no error.</span>
+    <span class="token variable">$factory</span><span class="token operator">-&gt;</span><span class="token function">release</span><span class="token punctuation">(</span><span class="token variable">$easy</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-    // Rewind the body of the response if possible.
-    $body = $easy-&gt;response-&gt;getBody();
-    if ($body-&gt;isSeekable()) {
-        $body-&gt;rewind();
-    }
+    <span class="token comment">// Rewind the body of the response if possible.</span>
+    <span class="token variable">$body</span> <span class="token operator">=</span> <span class="token variable">$easy</span><span class="token operator">-&gt;</span><span class="token property">response</span><span class="token operator">-&gt;</span><span class="token function">getBody</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token variable">$body</span><span class="token operator">-&gt;</span><span class="token function">isSeekable</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token variable">$body</span><span class="token operator">-&gt;</span><span class="token function">rewind</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
 
-    return new FulfilledPromise($easy-&gt;response);
-}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+    <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">FulfilledPromise</span><span class="token punctuation">(</span><span class="token variable">$easy</span><span class="token operator">-&gt;</span><span class="token property">response</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>那就让我们看看这个$easy是什么吧，追踪代码发现是一个EasyHandler的类，在这里面通过<strong>CURLOPT_HEADERFUNCTION</strong>，<strong>CURLOPT_WRITEFUNCTION</strong>，<strong>CURLOPT_READFUNCTION</strong>这个选项，相当于给curl设置了多个handler，请求成功之后都将值处理到了$easy上面，所以外面没有进行接受返回值的操作</p>
-<pre class="line-numbers language-none"><code class="language-none">public function create(RequestInterface $request, array $options)
-{
-    if (isset($options['curl']['body_as_string'])) {
-        $options['_body_as_string'] = $options['curl']['body_as_string'];
-        unset($options['curl']['body_as_string']);
-    }
+<pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function-definition function">create</span><span class="token punctuation">(</span><span class="token class-name type-declaration">RequestInterface</span> <span class="token variable">$request</span><span class="token punctuation">,</span> <span class="token keyword type-hint">array</span> <span class="token variable">$options</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">isset</span><span class="token punctuation">(</span><span class="token variable">$options</span><span class="token punctuation">[</span><span class="token string single-quoted-string">'curl'</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token string single-quoted-string">'body_as_string'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token variable">$options</span><span class="token punctuation">[</span><span class="token string single-quoted-string">'_body_as_string'</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token variable">$options</span><span class="token punctuation">[</span><span class="token string single-quoted-string">'curl'</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token string single-quoted-string">'body_as_string'</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+        <span class="token keyword">unset</span><span class="token punctuation">(</span><span class="token variable">$options</span><span class="token punctuation">[</span><span class="token string single-quoted-string">'curl'</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token string single-quoted-string">'body_as_string'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
 
-    $easy = new EasyHandle;
-    $easy-&gt;request = $request;
-    $easy-&gt;options = $options;
-    $conf = $this-&gt;getDefaultConf($easy);
-    $this-&gt;applyMethod($easy, $conf);
-    $this-&gt;applyHandlerOptions($easy, $conf);
-    $this-&gt;applyHeaders($easy, $conf);
-    unset($conf['_headers']);
+    <span class="token variable">$easy</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">EasyHandle</span><span class="token punctuation">;</span>
+    <span class="token variable">$easy</span><span class="token operator">-&gt;</span><span class="token property">request</span> <span class="token operator">=</span> <span class="token variable">$request</span><span class="token punctuation">;</span>
+    <span class="token variable">$easy</span><span class="token operator">-&gt;</span><span class="token property">options</span> <span class="token operator">=</span> <span class="token variable">$options</span><span class="token punctuation">;</span>
+    <span class="token variable">$conf</span> <span class="token operator">=</span> <span class="token variable">$this</span><span class="token operator">-&gt;</span><span class="token function">getDefaultConf</span><span class="token punctuation">(</span><span class="token variable">$easy</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token variable">$this</span><span class="token operator">-&gt;</span><span class="token function">applyMethod</span><span class="token punctuation">(</span><span class="token variable">$easy</span><span class="token punctuation">,</span> <span class="token variable">$conf</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token variable">$this</span><span class="token operator">-&gt;</span><span class="token function">applyHandlerOptions</span><span class="token punctuation">(</span><span class="token variable">$easy</span><span class="token punctuation">,</span> <span class="token variable">$conf</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token variable">$this</span><span class="token operator">-&gt;</span><span class="token function">applyHeaders</span><span class="token punctuation">(</span><span class="token variable">$easy</span><span class="token punctuation">,</span> <span class="token variable">$conf</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">unset</span><span class="token punctuation">(</span><span class="token variable">$conf</span><span class="token punctuation">[</span><span class="token string single-quoted-string">'_headers'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-    // Add handler options from the request configuration options
-    if (isset($options['curl'])) {
-        $conf = array_replace($conf, $options['curl']);
-    }
+    <span class="token comment">// Add handler options from the request configuration options</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">isset</span><span class="token punctuation">(</span><span class="token variable">$options</span><span class="token punctuation">[</span><span class="token string single-quoted-string">'curl'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token variable">$conf</span> <span class="token operator">=</span> <span class="token function">array_replace</span><span class="token punctuation">(</span><span class="token variable">$conf</span><span class="token punctuation">,</span> <span class="token variable">$options</span><span class="token punctuation">[</span><span class="token string single-quoted-string">'curl'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
 
-    $conf[CURLOPT_HEADERFUNCTION] = $this-&gt;createHeaderFn($easy);
-    $easy-&gt;handle = $this-&gt;handles
-        ? array_pop($this-&gt;handles)
-        : curl_init();
-    curl_setopt_array($easy-&gt;handle, $conf);
+    <span class="token variable">$conf</span><span class="token punctuation">[</span><span class="token constant">CURLOPT_HEADERFUNCTION</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token variable">$this</span><span class="token operator">-&gt;</span><span class="token function">createHeaderFn</span><span class="token punctuation">(</span><span class="token variable">$easy</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token variable">$easy</span><span class="token operator">-&gt;</span><span class="token property">handle</span> <span class="token operator">=</span> <span class="token variable">$this</span><span class="token operator">-&gt;</span><span class="token property">handles</span>
+        <span class="token operator">?</span> <span class="token function">array_pop</span><span class="token punctuation">(</span><span class="token variable">$this</span><span class="token operator">-&gt;</span><span class="token property">handles</span><span class="token punctuation">)</span>
+        <span class="token punctuation">:</span> <span class="token class-name return-type">curl_init</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">curl_setopt_array</span><span class="token punctuation">(</span><span class="token variable">$easy</span><span class="token operator">-&gt;</span><span class="token property">handle</span><span class="token punctuation">,</span> <span class="token variable">$conf</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-    return $easy;
-}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+    <span class="token keyword">return</span> <span class="token variable">$easy</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <h4 id="wait"><a href="#wait" class="headerlink" title="wait"></a>wait</h4><p>请求发送完毕，进入promise的wait操作，最终会执行promise的$waitFn函数。</p>
 <ul>
@@ -588,56 +584,6 @@ public static function finish(
             <hr/>
 
             
-
-    <div class="reprint" id="reprint-statement">
-        
-            <div class="reprint__author">
-                <span class="reprint-meta" style="font-weight: bold;">
-                    <i class="fas fa-user">
-                        文章作者:
-                    </i>
-                </span>
-                <span class="reprint-info">
-                    <a href="/about" rel="external nofollow noreferrer">Null Po</a>
-                </span>
-            </div>
-            <div class="reprint__type">
-                <span class="reprint-meta" style="font-weight: bold;">
-                    <i class="fas fa-link">
-                        文章链接:
-                    </i>
-                </span>
-                <span class="reprint-info">
-                    <a href="http://ponull.github.io/2022/05/23/php-http-ke-hu-duan-guzzle-yuan-li-jie-xi/">http://ponull.github.io/2022/05/23/php-http-ke-hu-duan-guzzle-yuan-li-jie-xi/</a>
-                </span>
-            </div>
-            <div class="reprint__notice">
-                <span class="reprint-meta" style="font-weight: bold;">
-                    <i class="fas fa-copyright">
-                        版权声明:
-                    </i>
-                </span>
-                <span class="reprint-info">
-                    本博客所有文章除特別声明外，均采用
-                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
-                    许可协议。转载请注明来源
-                    <a href="/about" target="_blank">Null Po</a>
-                    !
-                </span>
-            </div>
-        
-    </div>
-
-    <script async defer>
-      document.addEventListener("copy", function (e) {
-        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
-        M.toast({html: toastHTML})
-      });
-
-      function navToReprintStatement() {
-        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
-      }
-    </script>
 
 
 
@@ -907,7 +853,7 @@ public static function finish(
             
                 <span id="year">2020-2023</span>
             
-            <a href="/about" target="_blank">Null Po</a>
+            <a href="/about" target="_blank">Ponull</a>
             |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
             |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
             

@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Codemirror在线代码编辑器, 破浪">
+    <meta name="keywords" content="Codemirror在线代码编辑器, 编程,PHP,Dart,Flutter,Python,Go,Java,JavaScript,Vue,React,Node,Hexo,博客,教程,学习,工作">
     <meta name="description" content="之前写vue用过codemirror实现类似钉钉表单设计那个位置的自定义标题，感觉挺好用。不过没有记录使用说明，这次写公司项目的sql更新功能，为了让sql语句能够高亮，就再次引入了codemirror
 CodeMirror可以在线编辑代码">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -361,37 +361,37 @@ CodeMirror可以在线编辑代码">
             <div id="articleContent">
                 <p>之前写vue用过codemirror实现类似钉钉表单设计那个位置的自定义标题，感觉挺好用。不过没有记录使用说明，这次写公司项目的sql更新功能，为了让sql语句能够高亮，就再次引入了codemirror</p>
 <p>CodeMirror可以在线编辑代码，风格包括js, java, php, c++等等100多种语言。比较强大可以自行配置语言模式。能够做到自动补全，代码折叠，可配置键盘事件，vim， emacs， sublime text 风格、能完成查找替换，括号匹配，分栏显示，显示行号，自行配置字体大小和风格，等等等等。。。</p>
-<h2 id="引入Codemirror"><a href="#引入Codemirror" class="headerlink" title="引入Codemirror"></a>引入Codemirror</h2><pre class="line-numbers language-none"><code class="language-none">//引入css
-&lt;link href="https://cdn.bootcdn.net/ajax/libs/codemirror/5.65.3/codemirror.css" rel="stylesheet"&gt;
+<h2 id="引入Codemirror"><a href="#引入Codemirror" class="headerlink" title="引入Codemirror"></a>引入Codemirror</h2><pre class="line-numbers language-markup" data-language="markup"><code class="language-markup">//引入css
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>link</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>https://cdn.bootcdn.net/ajax/libs/codemirror/5.65.3/codemirror.css<span class="token punctuation">"</span></span> <span class="token attr-name">rel</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>stylesheet<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
 //引入js
-&lt;script src="https://cdn.bootcdn.net/ajax/libs/codemirror/5.65.3/codemirror.js"&gt;&lt;/script&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>https://cdn.bootcdn.net/ajax/libs/codemirror/5.65.3/codemirror.js<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token script"></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">&gt;</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>这样引入就可以直接实例化出codemirror了，不过还没有设置主题和指定语言</p>
-<pre class="line-numbers language-none"><code class="language-none">//引入主题样式， 我比较喜欢这个idea风格的主题就用这个了
-&lt;link href="https://cdn.bootcdn.net/ajax/libs/codemirror/5.65.3/theme/darcula.css" rel="stylesheet"&gt;
+<pre class="line-numbers language-markup" data-language="markup"><code class="language-markup">//引入主题样式， 我比较喜欢这个idea风格的主题就用这个了
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>link</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>https://cdn.bootcdn.net/ajax/libs/codemirror/5.65.3/theme/darcula.css<span class="token punctuation">"</span></span> <span class="token attr-name">rel</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>stylesheet<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
 
 //引入sql语句验证
-&lt;script src="https://cdn.bootcdn.net/ajax/libs/codemirror/5.65.3/addon/hint/sql-hint.js"&gt;&lt;/script&gt;
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>https://cdn.bootcdn.net/ajax/libs/codemirror/5.65.3/addon/hint/sql-hint.js<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token script"></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">&gt;</span></span>
 //引入sql关键字高亮
-&lt;script src="https://cdn.bootcdn.net/ajax/libs/codemirror/5.65.3/mode/sql/sql.js"&gt;&lt;/script&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>https://cdn.bootcdn.net/ajax/libs/codemirror/5.65.3/mode/sql/sql.js<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token script"></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">&gt;</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h2 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h2><p>通过调用CodeMirror.fromTextArea（）方法或者&nbsp;CodeMirror（）方法初始化配置。(更多配置见官网)</p>
-<pre class="line-numbers language-none"><code class="language-none">let codeMirrorEditor = CodeMirror.fromTextArea(document.getElementById('targetSql'), {
-    mode: 'text/x-mysql',//实现mysql语法高亮
-    theme: 'darcula',//指定darcula主题，前提是要引入
-    indentWithTabs: true,//代码折叠
-    smartIndent: true,
-    lineNumbers: true,//显示行号
-    matchBrackets: true,//括号匹配
-    autofocus: true,
-    extraKeys: {"Ctrl-Space": "autocomplete"},//ctrl-space唤起智能提示
-    hintOptions: {tables: {
-        users: ["name", "score", "birthDate"],
-        countries: ["name", "population", "size"]
-    }}
-});<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h2><p>通过调用CodeMirror.fromTextArea（）方法或者CodeMirror（）方法初始化配置。(更多配置见官网)</p>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">let</span> codeMirrorEditor <span class="token operator">=</span> CodeMirror<span class="token punctuation">.</span><span class="token function">fromTextArea</span><span class="token punctuation">(</span>document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">'targetSql'</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
+    <span class="token literal-property property">mode</span><span class="token operator">:</span> <span class="token string">'text/x-mysql'</span><span class="token punctuation">,</span><span class="token comment">//实现mysql语法高亮</span>
+    <span class="token literal-property property">theme</span><span class="token operator">:</span> <span class="token string">'darcula'</span><span class="token punctuation">,</span><span class="token comment">//指定darcula主题，前提是要引入</span>
+    <span class="token literal-property property">indentWithTabs</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span><span class="token comment">//代码折叠</span>
+    <span class="token literal-property property">smartIndent</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">lineNumbers</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span><span class="token comment">//显示行号</span>
+    <span class="token literal-property property">matchBrackets</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span><span class="token comment">//括号匹配</span>
+    <span class="token literal-property property">autofocus</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">extraKeys</span><span class="token operator">:</span> <span class="token punctuation">{</span><span class="token string-property property">"Ctrl-Space"</span><span class="token operator">:</span> <span class="token string">"autocomplete"</span><span class="token punctuation">}</span><span class="token punctuation">,</span><span class="token comment">//ctrl-space唤起智能提示</span>
+    <span class="token literal-property property">hintOptions</span><span class="token operator">:</span> <span class="token punctuation">{</span><span class="token literal-property property">tables</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token literal-property property">users</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">"name"</span><span class="token punctuation">,</span> <span class="token string">"score"</span><span class="token punctuation">,</span> <span class="token string">"birthDate"</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+        <span class="token literal-property property">countries</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">"name"</span><span class="token punctuation">,</span> <span class="token string">"population"</span><span class="token punctuation">,</span> <span class="token string">"size"</span><span class="token punctuation">]</span>
+    <span class="token punctuation">}</span><span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h2 id="获取值"><a href="#获取值" class="headerlink" title="获取值"></a>获取值</h2><pre class="line-numbers language-none"><code class="language-none">codeMirrorEditor.getValue();<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h2 id="获取值"><a href="#获取值" class="headerlink" title="获取值"></a>获取值</h2><pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript">codeMirrorEditor<span class="token punctuation">.</span><span class="token function">getValue</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>整体来说codemirror对于实现一个在线编辑器来说相当的方便了，就是引入插件和主题这些都是单独的文件要自己去找，引入一大堆。</p>
 
@@ -400,56 +400,6 @@ CodeMirror可以在线编辑代码">
             <hr/>
 
             
-
-    <div class="reprint" id="reprint-statement">
-        
-            <div class="reprint__author">
-                <span class="reprint-meta" style="font-weight: bold;">
-                    <i class="fas fa-user">
-                        文章作者:
-                    </i>
-                </span>
-                <span class="reprint-info">
-                    <a href="/about" rel="external nofollow noreferrer">Null Po</a>
-                </span>
-            </div>
-            <div class="reprint__type">
-                <span class="reprint-meta" style="font-weight: bold;">
-                    <i class="fas fa-link">
-                        文章链接:
-                    </i>
-                </span>
-                <span class="reprint-info">
-                    <a href="http://ponull.github.io/2022/05/05/codemirror-zai-xian-dai-ma-bian-ji-qi/">http://ponull.github.io/2022/05/05/codemirror-zai-xian-dai-ma-bian-ji-qi/</a>
-                </span>
-            </div>
-            <div class="reprint__notice">
-                <span class="reprint-meta" style="font-weight: bold;">
-                    <i class="fas fa-copyright">
-                        版权声明:
-                    </i>
-                </span>
-                <span class="reprint-info">
-                    本博客所有文章除特別声明外，均采用
-                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
-                    许可协议。转载请注明来源
-                    <a href="/about" target="_blank">Null Po</a>
-                    !
-                </span>
-            </div>
-        
-    </div>
-
-    <script async defer>
-      document.addEventListener("copy", function (e) {
-        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
-        M.toast({html: toastHTML})
-      });
-
-      function navToReprintStatement() {
-        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
-      }
-    </script>
 
 
 
@@ -719,7 +669,7 @@ CodeMirror可以在线编辑代码">
             
                 <span id="year">2020-2023</span>
             
-            <a href="/about" target="_blank">Null Po</a>
+            <a href="/about" target="_blank">Ponull</a>
             |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
             |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
             

@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="React axios跨域访问一个或多个域, 破浪">
+    <meta name="keywords" content="React axios跨域访问一个或多个域, 编程,PHP,Dart,Flutter,Python,Go,Java,JavaScript,Vue,React,Node,Hexo,博客,教程,学习,工作">
     <meta name="description" content="开发的时候，总是会出现跨域的问题，react不像vue有个配置文件所以会比vue麻烦一些，这里我们借助http-proxy-middleware这个来实现
 注意：这个我测试不行，不知道是那里的问题，启动报错
 
@@ -352,13 +352,13 @@
                 <p>开发的时候，总是会出现跨域的问题，react不像vue有个配置文件所以会比vue麻烦一些，这里我们借助http-proxy-middleware这个来实现</p>
 <p>注意：这个我测试不行，不知道是那里的问题，启动报错</p>
 <p><a target="_blank" rel="noopener" href="https://www.ponull.com/wp-content/uploads/2022/05/20220530211922.png"><img src="https://www.ponull.com/wp-content/uploads/2022/05/20220530211922.png"></a></p>
-<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><pre class="line-numbers language-none"><code class="language-none">npm install http-proxy-middleware --save<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">npm</span> <span class="token function">install</span> http-proxy-middleware <span class="token parameter variable">--save</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <h2 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h2><p>首先暂时运行命令将配置暴露出来</p>
-<pre class="line-numbers language-none"><code class="language-none">npm run eject<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">npm</span> run <span class="token function">eject</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p>执行完成可能会出现一个报错</p>
-<pre class="line-numbers language-none"><code class="language-none">√ Are you sure you want to eject? This action is permanent. ... yes
+<pre class="line-numbers language-text" data-language="text"><code class="language-text">√ Are you sure you want to eject? This action is permanent. ... yes
 This git repository has untracked files or uncommitted changes:
 
 app_client/package-lock.json
@@ -370,28 +370,28 @@ M gonitor.db
 Remove untracked files, stash or commit any changes, and try again.<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>报错的原因呢是因为咱们在使用脚手架搭建 react 时，系统会自动给我们添加一个 .gitignore 文件，如果你没有提交到仓库过，你就需要先提交到仓库，直接<code>git add .</code> <code>git commit -m "message"</code>上去就好了</p>
-<p>完成这两步之后就可以继续 命名&nbsp;<code>npm run eject</code> ，等配置文件暴露完成之后，你的 <code>package.json</code> 可能非常多配置，咱们不用管，在 src 下面建一个&nbsp;setupProxy.js (好像没有ts版本，暂时没有找到先用js版本吧，本人对ts理解也不深，就不去深究了)在里面写上下面代码：</p>
-<pre class="line-numbers language-none"><code class="language-none">const { createProxyMiddleware } = require('http-proxy-middleware')
-module.exports = function (app) {
-    app.use(
-        createProxyMiddleware('/api', {
-            target: 'http://127.0.0.1:8899',
-            changeOrigin: true,
-        })
-    )
-    app.use(
-        '/sys',
-        createProxyMiddleware({
-            target: 'http://127.0.0.1:8899',
-            changeOrigin: true,
-        })
-    );
-}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>完成这两步之后就可以继续 命名<code>npm run eject</code> ，等配置文件暴露完成之后，你的 <code>package.json</code> 可能非常多配置，咱们不用管，在 src 下面建一个setupProxy.js (好像没有ts版本，暂时没有找到先用js版本吧，本人对ts理解也不深，就不去深究了)在里面写上下面代码：</p>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">const</span> <span class="token punctuation">{</span> createProxyMiddleware <span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'http-proxy-middleware'</span><span class="token punctuation">)</span>
+module<span class="token punctuation">.</span><span class="token function-variable function">exports</span> <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">app</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    app<span class="token punctuation">.</span><span class="token function">use</span><span class="token punctuation">(</span>
+        <span class="token function">createProxyMiddleware</span><span class="token punctuation">(</span><span class="token string">'/api'</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
+            <span class="token literal-property property">target</span><span class="token operator">:</span> <span class="token string">'http://127.0.0.1:8899'</span><span class="token punctuation">,</span>
+            <span class="token literal-property property">changeOrigin</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+        <span class="token punctuation">}</span><span class="token punctuation">)</span>
+    <span class="token punctuation">)</span>
+    app<span class="token punctuation">.</span><span class="token function">use</span><span class="token punctuation">(</span>
+        <span class="token string">'/sys'</span><span class="token punctuation">,</span>
+        <span class="token function">createProxyMiddleware</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+            <span class="token literal-property property">target</span><span class="token operator">:</span> <span class="token string">'http://127.0.0.1:8899'</span><span class="token punctuation">,</span>
+            <span class="token literal-property property">changeOrigin</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+        <span class="token punctuation">}</span><span class="token punctuation">)</span>
+    <span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>找到 scripts 路径 打开 strat.js</p>
 <p><a target="_blank" rel="noopener" href="https://www.ponull.com/wp-content/uploads/2022/05/1653915910.png"><img src="https://www.ponull.com/wp-content/uploads/2022/05/1653915910.png"></a></p>
 <p>在第 117行左右 加上下面代码：</p>
-<pre class="line-numbers language-none"><code class="language-none">require('../src/setupProxy')(devServer) //注意路径是否正，是你刚才建的那个文件<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'../src/setupProxy'</span><span class="token punctuation">)</span><span class="token punctuation">(</span>devServer<span class="token punctuation">)</span> <span class="token comment">//注意路径是否正，是你刚才建的那个文件</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p><a target="_blank" rel="noopener" href="https://www.ponull.com/wp-content/uploads/2022/05/20220530210646.png"><img src="https://www.ponull.com/wp-content/uploads/2022/05/20220530210646-1024x655.png"></a></p>
 <p>如此 多个跨域便成功了，值得注意的就是， 需要在你请求的具体路径前面加上 api 或 sys 就可以被反向代理出去了</p>
@@ -401,56 +401,6 @@ module.exports = function (app) {
             <hr/>
 
             
-
-    <div class="reprint" id="reprint-statement">
-        
-            <div class="reprint__author">
-                <span class="reprint-meta" style="font-weight: bold;">
-                    <i class="fas fa-user">
-                        文章作者:
-                    </i>
-                </span>
-                <span class="reprint-info">
-                    <a href="/about" rel="external nofollow noreferrer">Null Po</a>
-                </span>
-            </div>
-            <div class="reprint__type">
-                <span class="reprint-meta" style="font-weight: bold;">
-                    <i class="fas fa-link">
-                        文章链接:
-                    </i>
-                </span>
-                <span class="reprint-info">
-                    <a href="http://ponull.github.io/2022/05/30/react-axios-kua-yu-fang-wen-yi-ge-huo-duo-ge-yu/">http://ponull.github.io/2022/05/30/react-axios-kua-yu-fang-wen-yi-ge-huo-duo-ge-yu/</a>
-                </span>
-            </div>
-            <div class="reprint__notice">
-                <span class="reprint-meta" style="font-weight: bold;">
-                    <i class="fas fa-copyright">
-                        版权声明:
-                    </i>
-                </span>
-                <span class="reprint-info">
-                    本博客所有文章除特別声明外，均采用
-                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
-                    许可协议。转载请注明来源
-                    <a href="/about" target="_blank">Null Po</a>
-                    !
-                </span>
-            </div>
-        
-    </div>
-
-    <script async defer>
-      document.addEventListener("copy", function (e) {
-        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
-        M.toast({html: toastHTML})
-      });
-
-      function navToReprintStatement() {
-        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
-      }
-    </script>
 
 
 
@@ -708,7 +658,7 @@ module.exports = function (app) {
             
                 <span id="year">2020-2023</span>
             
-            <a href="/about" target="_blank">Null Po</a>
+            <a href="/about" target="_blank">Ponull</a>
             |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
             |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
             

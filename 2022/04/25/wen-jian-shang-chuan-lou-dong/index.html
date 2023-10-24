@@ -421,18 +421,22 @@
 <p><a target="_blank" rel="noopener" href="https://www.ponull.com/wp-content/uploads/2022/04/image-2.png"><img src="https://www.ponull.com/wp-content/uploads/2022/04/image-2-1024x420.png"></a></p>
 <p><a target="_blank" rel="noopener" href="https://www.ponull.com/wp-content/uploads/2022/04/image-3.png"><img src="https://www.ponull.com/wp-content/uploads/2022/04/image-3.png"></a></p>
 <p>那我们传一个经过base64编码之后的php文件试试，结果就不展示了，失败了，因为后缀被强行转化为了.png，搜索是否可以把png当作php执行，发现如果web服务器存在两种漏洞就可以将png当作php进行解析</p>
-<p>1. pathinfo漏洞</p>
+<ol>
+<li>pathinfo漏洞</li>
+</ol>
 <ul>
-<li>IIS6.0 的解析漏洞 ：1.jpg%00.php 1.asp;.jpg 1.asp/1.jpg&nbsp;</li>
+<li>IIS6.0 的解析漏洞 ：1.jpg%00.php 1.asp;.jpg 1.asp/1.jpg</li>
 <li>IIS 7.0/IIS 7.5/</li>
-<li>Nginx &lt;8.03 畸形解析 1.jpg/.php&nbsp;</li>
-<li>Nginx &lt;8.03 空字节代码执行漏洞 1.jpg%00.php&nbsp;</li>
+<li>Nginx &lt;8.03 畸形解析 1.jpg/.php</li>
+<li>Nginx &lt;8.03 空字节代码执行漏洞 1.jpg%00.php</li>
 <li>Apache 解析漏洞 .php.一个无效后缀</li>
 </ul>
-<p>&nbsp;</p>
-<p>2. include漏洞</p>
-<p>只要对方的php代码中存在 include xxxx ,这个xxxx可以传入外部参数的时候，例如有些开发者自己实现的框架中,include controller 这个controller 有做全路径引入的时候</p>
-<p>我本地都是用的最新的肯定没有这个问题，那么服务器上面呢，还好我有公司demo服务器权限，赶紧看一下，发现不在漏洞的版本内，哎，这次就这样吧。毕竟我只是半桶水（更重要原因是要下班了，冲呀！！！）</p>
+<ol start="2">
+<li><p>include漏洞<br>只要对方的php代码中存在 include xxxx ,这个xxxx可以传入外部参数的时候，例如有些开发者自己实现的框架中,include controller 这个controller 有做全路径引入的时候</p>
+</li>
+<li><p>我本地都是用的最新的肯定没有这个问题，那么服务器上面呢，还好我有公司demo服务器权限，赶紧看一下，发现不在漏洞的版本内，哎，这次就这样吧。毕竟我只是半桶水（更重要原因是要下班了，冲呀！！！）</p>
+</li>
+</ol>
 
                 
             </div>

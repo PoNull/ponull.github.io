@@ -1,0 +1,520 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>破浪</title>
+  
+  <subtitle>主要是记录一下自己的工作学习中的一些教程</subtitle>
+  <link href="http://ponull.github.io/atom.xml" rel="self"/>
+  
+  <link href="http://ponull.github.io/"/>
+  <updated>2023-10-24T02:14:46.224Z</updated>
+  <id>http://ponull.github.io/</id>
+  
+  <author>
+    <name>Null Po</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Hello World</title>
+    <link href="http://ponull.github.io/2023/10/24/hello-world/"/>
+    <id>http://ponull.github.io/2023/10/24/hello-world/</id>
+    <published>2023-10-24T02:14:46.224Z</published>
+    <updated>2023-10-24T02:14:46.224Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.io/docs/&quot;&gt;documentation&lt;/a&gt;</summary>
+        
+      
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>linux11</title>
+    <link href="http://ponull.github.io/2023/10/23/linux11/"/>
+    <id>http://ponull.github.io/2023/10/23/linux11/</id>
+    <published>2023-10-23T14:29:59.000Z</published>
+    <updated>2023-10-24T02:14:46.224Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;pre class=&quot;line-numbers language-vue&quot; data-language=&quot;vue&quot;&gt;&lt;code class=&quot;language-vue&quot;&gt;export default{
+    data(){
+        return{
+         </summary>
+        
+      
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>如何实现展开和收起动画</title>
+    <link href="http://ponull.github.io/2022/11/21/ru-he-shi-xian-zhan-kai-he-shou-qi-dong-hua/"/>
+    <id>http://ponull.github.io/2022/11/21/ru-he-shi-xian-zhan-kai-he-shou-qi-dong-hua/</id>
+    <published>2022-11-21T03:08:12.000Z</published>
+    <updated>2023-10-24T02:19:57.942Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;项目开发中，内容过长或者一些扩展选择通常都是隐藏的，我们可以通过display: none来进行显示和隐藏，可是未免有些太突兀了，没有过渡的情况，用户是很难接受的&lt;/p&gt;
+&lt;p&gt;我们可以利用展开和收起动画来进行演示&lt;/p&gt;
+&lt;pre class=&quot;line-numbers</summary>
+        
+      
+    
+    
+    
+    <category term="Javascript" scheme="http://ponull.github.io/categories/Javascript/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>原生js增加或者删除class</title>
+    <link href="http://ponull.github.io/2022/11/21/yuan-sheng-js-zeng-jia-huo-zhe-shan-chu-class/"/>
+    <id>http://ponull.github.io/2022/11/21/yuan-sheng-js-zeng-jia-huo-zhe-shan-chu-class/</id>
+    <published>2022-11-21T02:52:53.000Z</published>
+    <updated>2023-10-24T02:19:57.940Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;比较传统的方法&quot;&gt;&lt;a href=&quot;#比较传统的方法&quot; class=&quot;headerlink&quot; title=&quot;比较传统的方法&quot;&gt;&lt;/a&gt;比较传统的方法&lt;/h2&gt;&lt;pre class=&quot;line-numbers language-none&quot;&gt;&lt;code</summary>
+        
+      
+    
+    
+    
+    <category term="Javascript" scheme="http://ponull.github.io/categories/Javascript/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>实现界面闪烁提醒警告</title>
+    <link href="http://ponull.github.io/2022/11/21/shi-xian-jie-mian-shan-shuo-ti-xing-jing-gao/"/>
+    <id>http://ponull.github.io/2022/11/21/shi-xian-jie-mian-shan-shuo-ti-xing-jing-gao/</id>
+    <published>2022-11-21T02:44:07.000Z</published>
+    <updated>2023-10-24T02:19:57.938Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;一般我们在做界面的时候，经常会写一些用户需要提交数据的界面，而用户总是会漏掉某些关键数据忘记填写，此时我们就需要对用户进行比较明确的错误提示，这里实现对某个区块的高亮闪烁提醒&lt;/p&gt;
+&lt;p&gt;定义动画&lt;/p&gt;
+&lt;pre class=&quot;line-numbers</summary>
+        
+      
+    
+    
+    
+    <category term="Javascript" scheme="http://ponull.github.io/categories/Javascript/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Ubuntu编译安装Nginx</title>
+    <link href="http://ponull.github.io/2022/11/15/bian-yi-an-zhuang-nginx/"/>
+    <id>http://ponull.github.io/2022/11/15/bian-yi-an-zhuang-nginx/</id>
+    <published>2022-11-15T09:16:25.000Z</published>
+    <updated>2023-10-24T02:19:57.936Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;环境准备&quot;&gt;&lt;a href=&quot;#环境准备&quot; class=&quot;headerlink&quot; title=&quot;环境准备&quot;&gt;&lt;/a&gt;&lt;strong&gt;环境准备&lt;/strong&gt;&lt;/h2&gt;&lt;p&gt;先安装准备环境&lt;/p&gt;
+&lt;pre class=&quot;line-numbers</summary>
+        
+      
+    
+    
+    
+    <category term="环境搭建" scheme="http://ponull.github.io/categories/%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>谷歌翻译免费api</title>
+    <link href="http://ponull.github.io/2022/11/10/gu-ge-fan-yi-mian-fei-api/"/>
+    <id>http://ponull.github.io/2022/11/10/gu-ge-fan-yi-mian-fei-api/</id>
+    <published>2022-11-10T03:07:03.000Z</published>
+    <updated>2023-10-24T02:19:57.934Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;最近做的一个项目，需要将中文翻译的到英文，想白嫖，经过网上搜寻一波，发现google有免费api的提供&lt;/p&gt;
+&lt;p&gt;请求地址&lt;a</summary>
+        
+      
+    
+    
+    
+    <category term="闲来杂谈" scheme="http://ponull.github.io/categories/%E9%97%B2%E6%9D%A5%E6%9D%82%E8%B0%88/"/>
+    
+    
+    <category term="translate" scheme="http://ponull.github.io/tags/translate/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Dart中的数字类型</title>
+    <link href="http://ponull.github.io/2022/10/29/dart-zhong-de-shu-zi-lei-xing/"/>
+    <id>http://ponull.github.io/2022/10/29/dart-zhong-de-shu-zi-lei-xing/</id>
+    <published>2022-10-29T09:53:31.000Z</published>
+    <updated>2023-10-24T02:19:57.932Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;这里，主要记录一下int的类型的存储，今天做一个解密方法移植，js =&amp;gt; dart，按理说不应该出错，可以执行到位运算的时候，结果始终不对。先上代码</summary>
+        
+      
+    
+    
+    
+    <category term="Flutter" scheme="http://ponull.github.io/categories/Flutter/"/>
+    
+    
+    <category term="js" scheme="http://ponull.github.io/tags/js/"/>
+    
+    <category term="dart" scheme="http://ponull.github.io/tags/dart/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>GetX Cli</title>
+    <link href="http://ponull.github.io/2022/10/28/getx-cli/"/>
+    <id>http://ponull.github.io/2022/10/28/getx-cli/</id>
+    <published>2022-10-28T13:33:57.000Z</published>
+    <updated>2023-10-24T02:19:57.930Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;虽然也用flutter写过几个项目，不过我是真的讨厌flutter路由管理，一直context下去，难受死了，于是就在网上找路由管理工具，找到了&lt;a</summary>
+        
+      
+    
+    
+    
+    <category term="Flutter" scheme="http://ponull.github.io/categories/Flutter/"/>
+    
+    
+    <category term="flutter" scheme="http://ponull.github.io/tags/flutter/"/>
+    
+    <category term="getx" scheme="http://ponull.github.io/tags/getx/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Flutter开发环境搭建</title>
+    <link href="http://ponull.github.io/2022/10/28/flutter-kai-fa-huan-jing-da-jian/"/>
+    <id>http://ponull.github.io/2022/10/28/flutter-kai-fa-huan-jing-da-jian/</id>
+    <published>2022-10-28T12:44:51.000Z</published>
+    <updated>2023-10-24T02:19:57.928Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;首先我们打开官网-flutter&quot;&gt;&lt;a href=&quot;#首先我们打开官网-flutter&quot; class=&quot;headerlink&quot; title=&quot;首先我们打开官网 flutter&quot;&gt;&lt;/a&gt;首先我们打开官网 &lt;a</summary>
+        
+      
+    
+    
+    
+    <category term="Flutter" scheme="http://ponull.github.io/categories/Flutter/"/>
+    
+    
+    <category term="flutter" scheme="http://ponull.github.io/tags/flutter/"/>
+    
+    <category term="环境搭建" scheme="http://ponull.github.io/tags/%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Linux提示no space left on device</title>
+    <link href="http://ponull.github.io/2022/10/17/linux-ti-shi-no-space-left-on-device/"/>
+    <id>http://ponull.github.io/2022/10/17/linux-ti-shi-no-space-left-on-device/</id>
+    <published>2022-10-17T03:42:11.000Z</published>
+    <updated>2023-10-24T02:19:57.926Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;提示NO SPACE LEFT ON DEVICE但有磁盘空间&lt;/p&gt;
+&lt;p&gt;按照提示以为是磁盘空间满了，于是执行 df -h查看：&lt;/p&gt;
+&lt;p&gt;&lt;a</summary>
+        
+      
+    
+    
+    
+    <category term="uncategorized" scheme="http://ponull.github.io/categories/uncategorized/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>修改浏览器Navigator对象的属性</title>
+    <link href="http://ponull.github.io/2022/07/21/xiu-gai-liu-lan-qi-navigator-dui-xiang-de-shu-xing/"/>
+    <id>http://ponull.github.io/2022/07/21/xiu-gai-liu-lan-qi-navigator-dui-xiang-de-shu-xing/</id>
+    <published>2022-07-21T01:24:18.000Z</published>
+    <updated>2023-10-24T02:19:57.924Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;最近做项目，需要绕过检测是否为手机用户，通过调试发现网页调用Navigator.platform进行了判定&lt;/p&gt;
+&lt;p&gt;注入预执行js，直接修改值不生效，搜索发现，可通过Object.defineProperty进行设置&lt;/p&gt;
+&lt;pre</summary>
+        
+      
+    
+    
+    
+    <category term="Javascript" scheme="http://ponull.github.io/categories/Javascript/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>tar命令使用详解</title>
+    <link href="http://ponull.github.io/2022/07/12/tar-ming-ling-shi-yong-xiang-jie/"/>
+    <id>http://ponull.github.io/2022/07/12/tar-ming-ling-shi-yong-xiang-jie/</id>
+    <published>2022-07-12T07:12:01.000Z</published>
+    <updated>2023-10-24T02:19:57.921Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h3 id=&quot;命令格式：tar-zxvf-【压缩包文件名-tar-gz】-C-【路径】&quot;&gt;&lt;a href=&quot;#命令格式：tar-zxvf-【压缩包文件名-tar-gz】-C-【路径】&quot; class=&quot;headerlink&quot; title=&quot;命令格式：tar -zxvf</summary>
+        
+      
+    
+    
+    
+    <category term="实用工具" scheme="http://ponull.github.io/categories/%E5%AE%9E%E7%94%A8%E5%B7%A5%E5%85%B7/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>安装Glances(centos)</title>
+    <link href="http://ponull.github.io/2022/07/01/an-zhuang-glancescentos/"/>
+    <id>http://ponull.github.io/2022/07/01/an-zhuang-glancescentos/</id>
+    <published>2022-07-01T06:51:31.000Z</published>
+    <updated>2023-10-24T02:19:57.919Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;glances是一个监控工具，好像是python写的&lt;/p&gt;
+&lt;h2 id=&quot;概览功能&quot;&gt;&lt;a href=&quot;#概览功能&quot; class=&quot;headerlink&quot; title=&quot;概览功能&quot;&gt;&lt;/a&gt;概览功能&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;CPU</summary>
+        
+      
+    
+    
+    
+    <category term="实用工具" scheme="http://ponull.github.io/categories/%E5%AE%9E%E7%94%A8%E5%B7%A5%E5%85%B7/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Golang环境搭建(windows)</title>
+    <link href="http://ponull.github.io/2022/06/26/golang-huan-jing-da-jian-windows/"/>
+    <id>http://ponull.github.io/2022/06/26/golang-huan-jing-da-jian-windows/</id>
+    <published>2022-06-26T06:41:51.000Z</published>
+    <updated>2023-10-24T02:19:57.917Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;golang这个语言写起来还是很方便的，并且我最喜欢的一点就是可以打包成二进制，在不同的环境下直接运行，不需要各种复杂的环境，而且编译速度也极快，（之前写过一段时间rust，那个编译速度简直不堪入目）&lt;/p&gt;
+&lt;h2 id=&quot;下载安装&quot;&gt;&lt;a href=&quot;#下载安装&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="uncategorized" scheme="http://ponull.github.io/categories/uncategorized/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>React axios跨域访问一个或多个域</title>
+    <link href="http://ponull.github.io/2022/05/30/react-axios-kua-yu-fang-wen-yi-ge-huo-duo-ge-yu/"/>
+    <id>http://ponull.github.io/2022/05/30/react-axios-kua-yu-fang-wen-yi-ge-huo-duo-ge-yu/</id>
+    <published>2022-05-30T13:08:58.000Z</published>
+    <updated>2023-10-24T02:19:57.914Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;开发的时候，总是会出现跨域的问题，react不像vue有个配置文件所以会比vue麻烦一些，这里我们借助http-proxy-middleware这个来实现&lt;/p&gt;
+&lt;p&gt;注意：这个我测试不行，不知道是那里的问题，启动报错&lt;/p&gt;
+&lt;p&gt;&lt;a</summary>
+        
+      
+    
+    
+    
+    <category term="React" scheme="http://ponull.github.io/categories/React/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>PHP Cli模式下获取参数</title>
+    <link href="http://ponull.github.io/2022/05/27/php-cli-mo-shi-xia-huo-qu-can-shu/"/>
+    <id>http://ponull.github.io/2022/05/27/php-cli-mo-shi-xia-huo-qu-can-shu/</id>
+    <published>2022-05-27T09:05:16.000Z</published>
+    <updated>2023-10-24T02:19:57.906Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;作为一个PHPer，却一直嫌弃PHP，其实是自己不够了解PHP，除了异步，你们能做的PHP也能做到&lt;/p&gt;
+&lt;h2 id=&quot;数组-argv&quot;&gt;&lt;a href=&quot;#数组-argv&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="PHP" scheme="http://ponull.github.io/categories/PHP/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>浅谈Keep-Alive</title>
+    <link href="http://ponull.github.io/2022/05/23/qian-tan-keep-alive/"/>
+    <id>http://ponull.github.io/2022/05/23/qian-tan-keep-alive/</id>
+    <published>2022-05-23T09:37:55.000Z</published>
+    <updated>2023-10-24T02:19:57.903Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;之前开发的时候，经常看见这个header头，一直没有了解为什么可以保持连接，以及保持连接作用，在本书2.7发现答案&lt;/p&gt;
+&lt;p&gt;HTTP 协议的初始版本中，每进行一次 HTTP 通信就要断开一次TCP 连接。&lt;/p&gt;
+&lt;h2 id=&quot;持久连接&quot;&gt;&lt;a</summary>
+        
+      
+    
+    
+    
+    <category term="图解 HTTP" scheme="http://ponull.github.io/categories/%E5%9B%BE%E8%A7%A3-HTTP/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>URI格式</title>
+    <link href="http://ponull.github.io/2022/05/23/uri-ge-shi/"/>
+    <id>http://ponull.github.io/2022/05/23/uri-ge-shi/</id>
+    <published>2022-05-23T09:10:52.000Z</published>
+    <updated>2023-10-24T02:19:57.901Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;与 URI（统一资源标识符）相比，我们更熟悉 URL（ Uniform Resource Locator，统一资源定位符）。 URL 正是使用 Web 浏览器等访问 Web 页面时需要输入的网页地址。&lt;/p&gt;
+&lt;h2 id=&quot;统一资源标识符&quot;&gt;&lt;a</summary>
+        
+      
+    
+    
+    
+    <category term="图解 HTTP" scheme="http://ponull.github.io/categories/%E5%9B%BE%E8%A7%A3-HTTP/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>PHP HTTP客户端-Guzzle原理解析</title>
+    <link href="http://ponull.github.io/2022/05/23/php-http-ke-hu-duan-guzzle-yuan-li-jie-xi/"/>
+    <id>http://ponull.github.io/2022/05/23/php-http-ke-hu-duan-guzzle-yuan-li-jie-xi/</id>
+    <published>2022-05-23T07:42:23.000Z</published>
+    <updated>2023-10-24T02:19:57.899Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;本文适合寻找PHP HTTP客户端库，或者对于Guzzle的使用和实现原理比较感兴趣的同学阅读，需要具备一定的PHP基础知识。&lt;/p&gt;
+&lt;h2 id=&quot;背景&quot;&gt;&lt;a href=&quot;#背景&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="PHP" scheme="http://ponull.github.io/categories/PHP/"/>
+    
+    <category term="编程开发" scheme="http://ponull.github.io/categories/%E7%BC%96%E7%A8%8B%E5%BC%80%E5%8F%91/"/>
+    
+    
+    <category term="guzzle" scheme="http://ponull.github.io/tags/guzzle/"/>
+    
+    <category term="http" scheme="http://ponull.github.io/tags/http/"/>
+    
+    <category term="php" scheme="http://ponull.github.io/tags/php/"/>
+    
+  </entry>
+  
+</feed>

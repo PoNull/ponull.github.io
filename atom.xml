@@ -6,7 +6,7 @@
   <link href="http://ponull.github.io/atom.xml" rel="self"/>
   
   <link href="http://ponull.github.io/"/>
-  <updated>2023-10-24T03:49:48.927Z</updated>
+  <updated>2023-10-24T05:51:44.425Z</updated>
   <id>http://ponull.github.io/</id>
   
   <author>
@@ -17,11 +17,34 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>css文字选中效果</title>
+    <link href="http://ponull.github.io/2023/10/24/css-wen-zi-xuan-zhong-xiao-guo/"/>
+    <id>http://ponull.github.io/2023/10/24/css-wen-zi-xuan-zhong-xiao-guo/</id>
+    <published>2023-10-24T05:50:17.000Z</published>
+    <updated>2023-10-24T05:51:44.425Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h3 id=&quot;文字选中效果&quot;&gt;&lt;a href=&quot;#文字选中效果&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    
+    <category term="css" scheme="http://ponull.github.io/tags/css/"/>
+    
+  </entry>
+  
+  <entry>
     <title>如何实现展开和收起动画</title>
     <link href="http://ponull.github.io/2022/11/21/ru-he-shi-xian-zhan-kai-he-shou-qi-dong-hua/"/>
     <id>http://ponull.github.io/2022/11/21/ru-he-shi-xian-zhan-kai-he-shou-qi-dong-hua/</id>
     <published>2022-11-21T03:08:12.000Z</published>
-    <updated>2023-10-24T03:49:48.927Z</updated>
+    <updated>2023-10-24T05:52:45.739Z</updated>
     
     
       
@@ -46,7 +69,7 @@
     <link href="http://ponull.github.io/2022/11/21/yuan-sheng-js-zeng-jia-huo-zhe-shan-chu-class/"/>
     <id>http://ponull.github.io/2022/11/21/yuan-sheng-js-zeng-jia-huo-zhe-shan-chu-class/</id>
     <published>2022-11-21T02:52:53.000Z</published>
-    <updated>2023-10-24T03:49:33.035Z</updated>
+    <updated>2023-10-24T05:52:45.773Z</updated>
     
     
       
@@ -69,7 +92,7 @@
     <link href="http://ponull.github.io/2022/11/21/shi-xian-jie-mian-shan-shuo-ti-xing-jing-gao/"/>
     <id>http://ponull.github.io/2022/11/21/shi-xian-jie-mian-shan-shuo-ti-xing-jing-gao/</id>
     <published>2022-11-21T02:44:07.000Z</published>
-    <updated>2023-10-24T02:39:30.167Z</updated>
+    <updated>2023-10-24T05:52:45.830Z</updated>
     
     
       
@@ -94,7 +117,7 @@
     <link href="http://ponull.github.io/2022/11/15/bian-yi-an-zhuang-nginx/"/>
     <id>http://ponull.github.io/2022/11/15/bian-yi-an-zhuang-nginx/</id>
     <published>2022-11-15T09:16:25.000Z</published>
-    <updated>2023-10-24T03:48:55.875Z</updated>
+    <updated>2023-10-24T05:52:45.777Z</updated>
     
     
       
@@ -118,7 +141,7 @@
     <link href="http://ponull.github.io/2022/11/10/gu-ge-fan-yi-mian-fei-api/"/>
     <id>http://ponull.github.io/2022/11/10/gu-ge-fan-yi-mian-fei-api/</id>
     <published>2022-11-10T03:07:03.000Z</published>
-    <updated>2023-10-24T03:47:27.633Z</updated>
+    <updated>2023-10-24T05:52:45.732Z</updated>
     
     
       
@@ -144,7 +167,7 @@
     <link href="http://ponull.github.io/2022/10/29/dart-zhong-de-shu-zi-lei-xing/"/>
     <id>http://ponull.github.io/2022/10/29/dart-zhong-de-shu-zi-lei-xing/</id>
     <published>2022-10-29T09:53:31.000Z</published>
-    <updated>2023-10-24T03:46:53.014Z</updated>
+    <updated>2023-10-24T05:52:13.682Z</updated>
     
     
       
@@ -171,7 +194,7 @@
     <link href="http://ponull.github.io/2022/10/28/getx-cli/"/>
     <id>http://ponull.github.io/2022/10/28/getx-cli/</id>
     <published>2022-10-28T13:33:57.000Z</published>
-    <updated>2023-10-24T03:46:24.623Z</updated>
+    <updated>2023-10-24T05:52:45.827Z</updated>
     
     
       
@@ -198,7 +221,7 @@
     <link href="http://ponull.github.io/2022/10/28/flutter-kai-fa-huan-jing-da-jian/"/>
     <id>http://ponull.github.io/2022/10/28/flutter-kai-fa-huan-jing-da-jian/</id>
     <published>2022-10-28T12:44:51.000Z</published>
-    <updated>2023-10-24T02:38:14.847Z</updated>
+    <updated>2023-10-24T05:52:45.807Z</updated>
     
     
       
@@ -225,7 +248,7 @@
     <link href="http://ponull.github.io/2022/10/17/linux-ti-shi-no-space-left-on-device/"/>
     <id>http://ponull.github.io/2022/10/17/linux-ti-shi-no-space-left-on-device/</id>
     <published>2022-10-17T03:42:11.000Z</published>
-    <updated>2023-10-24T02:38:14.845Z</updated>
+    <updated>2023-10-24T05:52:45.823Z</updated>
     
     
       
@@ -250,7 +273,7 @@
     <link href="http://ponull.github.io/2022/07/21/xiu-gai-liu-lan-qi-navigator-dui-xiang-de-shu-xing/"/>
     <id>http://ponull.github.io/2022/07/21/xiu-gai-liu-lan-qi-navigator-dui-xiang-de-shu-xing/</id>
     <published>2022-07-21T01:24:18.000Z</published>
-    <updated>2023-10-24T03:45:56.983Z</updated>
+    <updated>2023-10-24T05:52:45.766Z</updated>
     
     
       
@@ -275,7 +298,7 @@
     <link href="http://ponull.github.io/2022/07/12/tar-ming-ling-shi-yong-xiang-jie/"/>
     <id>http://ponull.github.io/2022/07/12/tar-ming-ling-shi-yong-xiang-jie/</id>
     <published>2022-07-12T07:12:01.000Z</published>
-    <updated>2023-10-24T03:45:43.335Z</updated>
+    <updated>2023-10-24T05:52:45.728Z</updated>
     
     
       
@@ -298,7 +321,7 @@
     <link href="http://ponull.github.io/2022/07/01/an-zhuang-glancescentos/"/>
     <id>http://ponull.github.io/2022/07/01/an-zhuang-glancescentos/</id>
     <published>2022-07-01T06:51:31.000Z</published>
-    <updated>2023-10-24T03:45:22.180Z</updated>
+    <updated>2023-10-24T05:52:45.780Z</updated>
     
     
       
@@ -323,7 +346,7 @@
     <link href="http://ponull.github.io/2022/06/26/golang-huan-jing-da-jian-windows/"/>
     <id>http://ponull.github.io/2022/06/26/golang-huan-jing-da-jian-windows/</id>
     <published>2022-06-26T06:41:51.000Z</published>
-    <updated>2023-10-24T03:44:26.562Z</updated>
+    <updated>2023-10-24T05:52:45.793Z</updated>
     
     
       
@@ -347,7 +370,7 @@
     <link href="http://ponull.github.io/2022/05/30/react-axios-kua-yu-fang-wen-yi-ge-huo-duo-ge-yu/"/>
     <id>http://ponull.github.io/2022/05/30/react-axios-kua-yu-fang-wen-yi-ge-huo-duo-ge-yu/</id>
     <published>2022-05-30T13:08:58.000Z</published>
-    <updated>2023-10-24T03:43:55.319Z</updated>
+    <updated>2023-10-24T05:52:45.742Z</updated>
     
     
       
@@ -372,7 +395,7 @@
     <link href="http://ponull.github.io/2022/05/27/php-cli-mo-shi-xia-huo-qu-can-shu/"/>
     <id>http://ponull.github.io/2022/05/27/php-cli-mo-shi-xia-huo-qu-can-shu/</id>
     <published>2022-05-27T09:05:16.000Z</published>
-    <updated>2023-10-24T03:42:26.584Z</updated>
+    <updated>2023-10-24T05:52:45.770Z</updated>
     
     
       
@@ -396,7 +419,7 @@
     <link href="http://ponull.github.io/2022/05/23/qian-tan-keep-alive/"/>
     <id>http://ponull.github.io/2022/05/23/qian-tan-keep-alive/</id>
     <published>2022-05-23T09:37:55.000Z</published>
-    <updated>2023-10-24T02:38:14.819Z</updated>
+    <updated>2023-10-24T05:52:45.746Z</updated>
     
     
       
@@ -421,7 +444,7 @@
     <link href="http://ponull.github.io/2022/05/23/uri-ge-shi/"/>
     <id>http://ponull.github.io/2022/05/23/uri-ge-shi/</id>
     <published>2022-05-23T09:10:52.000Z</published>
-    <updated>2023-10-24T02:38:14.818Z</updated>
+    <updated>2023-10-24T05:52:45.735Z</updated>
     
     
       
@@ -445,7 +468,7 @@
     <link href="http://ponull.github.io/2022/05/23/php-http-ke-hu-duan-guzzle-yuan-li-jie-xi/"/>
     <id>http://ponull.github.io/2022/05/23/php-http-ke-hu-duan-guzzle-yuan-li-jie-xi/</id>
     <published>2022-05-23T07:42:23.000Z</published>
-    <updated>2023-10-24T03:40:56.054Z</updated>
+    <updated>2023-10-24T05:52:45.796Z</updated>
     
     
       
@@ -461,7 +484,7 @@
     
     <category term="PHP" scheme="http://ponull.github.io/categories/PHP/"/>
     
-    <category term="编程开发" scheme="http://ponull.github.io/categories/%E7%BC%96%E7%A8%8B%E5%BC%80%E5%8F%91/"/>
+    <category term="编程开发" scheme="http://ponull.github.io/categories/PHP/%E7%BC%96%E7%A8%8B%E5%BC%80%E5%8F%91/"/>
     
     
     <category term="guzzle" scheme="http://ponull.github.io/tags/guzzle/"/>
@@ -477,7 +500,7 @@
     <link href="http://ponull.github.io/2022/05/23/php-suan-fa-pai-lie-zu-he/"/>
     <id>http://ponull.github.io/2022/05/23/php-suan-fa-pai-lie-zu-he/</id>
     <published>2022-05-23T01:48:29.000Z</published>
-    <updated>2023-10-24T03:40:01.841Z</updated>
+    <updated>2023-10-24T05:52:45.754Z</updated>
     
     
       
@@ -492,30 +515,6 @@
     
     
     <category term="PHP" scheme="http://ponull.github.io/categories/PHP/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>Openwrt的KMS服务，激活windows和office</title>
-    <link href="http://ponull.github.io/2022/05/19/openwrt-de-kms-fu-wu-ji-huo-windows-he-office/"/>
-    <id>http://ponull.github.io/2022/05/19/openwrt-de-kms-fu-wu-ji-huo-windows-he-office/</id>
-    <published>2022-05-19T10:09:17.000Z</published>
-    <updated>2023-10-24T03:39:29.327Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;每次重装系统之后，都要在网上找激活密钥，大多不可用，费时费力，用破解软件又怕有后门，所有这里记录一下用openwrt的kms服务来激活，安全又方便&lt;/p&gt;
-&lt;h2 id=&quot;激活windows&quot;&gt;&lt;a href=&quot;#激活windows&quot; class=&quot;headerlink&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="实用工具" scheme="http://ponull.github.io/categories/%E5%AE%9E%E7%94%A8%E5%B7%A5%E5%85%B7/"/>
     
     
   </entry>

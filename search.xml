@@ -4,6 +4,25 @@
   
     
     <entry>
+      <title>css文字选中效果</title>
+      <link href="/2023/10/24/css-wen-zi-xuan-zhong-xiao-guo/"/>
+      <url>/2023/10/24/css-wen-zi-xuan-zhong-xiao-guo/</url>
+      
+        <content type="html"><![CDATA[<h3 id="文字选中效果"><a href="#文字选中效果" class="headerlink" title="文字选中效果"></a>文字选中效果</h3><p>这个可能很少有人注意过。在默认状态先一般选中的文本颜色是白字蓝底的，不过可以通过css进行设置。<br>代码如下：</p><pre class="line-numbers language-css" data-language="css"><code class="language-css"><span class="token comment">/*文字选中效果*/</span><span class="token selector">*::selection</span> <span class="token punctuation">{</span>    <span class="token property">background-color</span><span class="token punctuation">:</span> palevioletred<span class="token punctuation">;</span>    <span class="token property">color</span><span class="token punctuation">:</span> white<span class="token punctuation">;</span><span class="token punctuation">}</span><span class="token selector">*::-moz-selection</span> <span class="token punctuation">{</span>    <span class="token property">background-color</span><span class="token punctuation">:</span> palevioletred<span class="token punctuation">;</span>    <span class="token property">color</span><span class="token punctuation">:</span> white<span class="token punctuation">;</span><span class="token punctuation">}</span><span class="token selector">*::-webkit-selection</span> <span class="token punctuation">{</span>    <span class="token property">background-color</span><span class="token punctuation">:</span> palevioletred<span class="token punctuation">;</span>    <span class="token property">color</span><span class="token punctuation">:</span> white<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><h3 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h3><p>::selection定义元素上的伪选择器，以便在选定元素时设置其中文本的样式。请注意，如果不组合任何其他选择器，则样式将在文档根级别应用于任何可选元素。</p>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> css </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>如何实现展开和收起动画</title>
       <link href="/2022/11/21/ru-he-shi-xian-zhan-kai-he-shou-qi-dong-hua/"/>
       <url>/2022/11/21/ru-he-shi-xian-zhan-kai-he-shou-qi-dong-hua/</url>

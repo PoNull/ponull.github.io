@@ -4,11 +4,10 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="css文字选中效果, 编程,PHP,Dart,Flutter,Python,Go,Java,JavaScript,Vue,React,Node,Hexo,博客,教程,学习,工作">
-    <meta name="description" content="文字选中效果这个可能很少有人注意过。在默认状态先一般选中的文本颜色是白字蓝底的，不过可以通过css进行设置。代码如下：
-/*文字选中效果*/
-*::selection {
-    background-color: palevioletre">
+    <meta name="keywords" content="搭建节点订阅转换服务器, 编程,PHP,Dart,Flutter,Python,Go,Java,JavaScript,Vue,React,Node,Hexo,博客,教程,学习,工作">
+    <meta name="description" content="有时候用别人的订阅服务, 在更新节点的时候总感觉拉不动, 于是就想着自己搭建一个, 顺便学习一下
+SubConverter后端搭建源码地址: tindy2013/subconverter
+下载并解压项目release 二进制文件cd /ro">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -20,7 +19,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>css文字选中效果 | 破浪</title>
+    <title>搭建节点订阅转换服务器 | 破浪</title>
     <link rel="icon" type="image/png" href="/favicon.png">
     
 
@@ -209,12 +208,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/11.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/7.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">css文字选中效果</h1>
+                    <h1 class="description center-align post-title">搭建节点订阅转换服务器</h1>
                 </div>
             </div>
         </div>
@@ -236,13 +235,9 @@
             <div class="row tag-cate">
                 <div class="col s7">
                     
-                    <div class="article-tag">
-                        
-                            <a href="/tags/css/">
-                                <span class="chip bg-color">css</span>
-                            </a>
-                        
-                    </div>
+                          <div class="article-tag">
+                            <span class="chip bg-color">无标签</span>
+                          </div>
                     
                 </div>
                 <div class="col s5 right-align">
@@ -254,7 +249,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2023-10-24
+                    2023-11-02
                 </div>
                 
 
@@ -278,23 +273,71 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h3 id="文字选中效果"><a href="#文字选中效果" class="headerlink" title="文字选中效果"></a>文字选中效果</h3><p>这个可能很少有人注意过。在默认状态先一般选中的文本颜色是白字蓝底的，不过可以通过css进行设置。<br>代码如下：</p>
-<pre class="line-numbers language-css" data-language="css"><code class="language-css"><span class="token comment">/*文字选中效果*/</span>
-<span class="token selector">*::selection</span> <span class="token punctuation">{</span>
-    <span class="token property">background-color</span><span class="token punctuation">:</span> palevioletred<span class="token punctuation">;</span>
-    <span class="token property">color</span><span class="token punctuation">:</span> white<span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
+                <p>有时候用别人的订阅服务, 在更新节点的时候总感觉拉不动, 于是就想着自己搭建一个, 顺便学习一下</p>
+<h2 id="SubConverter后端搭建"><a href="#SubConverter后端搭建" class="headerlink" title="SubConverter后端搭建"></a>SubConverter后端搭建</h2><p>源码地址: <a target="_blank" rel="noopener" href="https://github.com/tindy2013/subconverter">tindy2013/subconverter</a></p>
+<h3 id="下载并解压项目release-二进制文件"><a href="#下载并解压项目release-二进制文件" class="headerlink" title="下载并解压项目release 二进制文件"></a>下载并解压<a target="_blank" rel="noopener" href="https://github.com/tindy2013/subconverter/releases">项目release 二进制文件</a></h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token builtin class-name">cd</span> /root
+<span class="token function">wget</span> https://github.com/tindy2013/subconverter/releases/download/v0.8.1/subconverter_linux64.tar.gz
+<span class="token function">tar</span> <span class="token parameter variable">-zxvf</span> subconverter_linux64.tar.gz<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 
-<span class="token selector">*::-moz-selection</span> <span class="token punctuation">{</span>
-    <span class="token property">background-color</span><span class="token punctuation">:</span> palevioletred<span class="token punctuation">;</span>
-    <span class="token property">color</span><span class="token punctuation">:</span> white<span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
+<h3 id="修改配置文件参数"><a href="#修改配置文件参数" class="headerlink" title="修改配置文件参数"></a>修改配置文件参数</h3><h5 id="找到解压出来的目录的subconverter-pref-ini文件"><a href="#找到解压出来的目录的subconverter-pref-ini文件" class="headerlink" title="找到解压出来的目录的subconverter/pref.ini文件"></a>找到解压出来的目录的<code>subconverter/pref.ini</code>文件</h5><p>这里会有三个文件<code>pref.example.ini</code> <code>pref.example.toml</code> <code>pref.example.yml</code><br>好像都是一样的, 这里我们使用<code>pref.example.yml</code>进行修改，我觉得yml语法简单清晰一些，其它的也同理</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token builtin class-name">cd</span> /root/subconverter
+<span class="token function">cp</span> pref.example.yml pref.yml
+<span class="token function">vim</span> pref.yml<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<h5 id="找到如下参数进行修改"><a href="#找到如下参数进行修改" class="headerlink" title="找到如下参数进行修改"></a>找到如下参数进行修改</h5><pre class="line-numbers language-yaml" data-language="yaml"><code class="language-yaml"><span class="token key atrule">common</span><span class="token punctuation">:</span>
+  <span class="token key atrule">api_access_token</span><span class="token punctuation">:</span> subconvertertoken            <span class="token comment">#随意设置自己知道就行</span>
 
-<span class="token selector">*::-webkit-selection</span> <span class="token punctuation">{</span>
-    <span class="token property">background-color</span><span class="token punctuation">:</span> palevioletred<span class="token punctuation">;</span>
-    <span class="token property">color</span><span class="token punctuation">:</span> white
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h3 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h3><p>::selection定义元素上的伪选择器，以便在选定元素时设置其中文本的样式。请注意，如果不组合任何其他选择器，则样式将在文档根级别应用于任何可选元素。</p>
+<span class="token key atrule">managed_config</span><span class="token punctuation">:</span>
+  <span class="token key atrule">managed_config_prefix</span><span class="token punctuation">:</span> https<span class="token punctuation">:</span>//sub.domain.com  <span class="token comment">#设置成我们刚刚解析的域名</span>
+
+<span class="token key atrule">server</span><span class="token punctuation">:</span>
+  <span class="token key atrule">listen</span><span class="token punctuation">:</span> 127.0.0.1                              <span class="token comment">#这里改成 127.0.0.1 进行反代</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="创建服务进程并启动"><a href="#创建服务进程并启动" class="headerlink" title="创建服务进程并启动"></a>创建服务进程并启动</h3><p>接下来我们需要创建一个服务，让VPS每次重启或是开机自动运行后端程序</p>
+<p>找到VPS目录 <code>/etc/systemd/system</code>，创建一个名为 sub.service 的文件</p>
+<p>打开文件，贴入以下内容，保存。</p>
+<pre class="line-numbers language-editorconfig" data-language="editorconfig"><code class="language-editorconfig"><span class="token section selector"><span class="token punctuation">[</span>Unit<span class="token punctuation">]</span></span>
+<span class="token key attr-name">Description</span><span class="token value attr-value"><span class="token punctuation">=</span>A API For Subscription Convert</span>
+<span class="token key attr-name">After</span><span class="token value attr-value"><span class="token punctuation">=</span>network.target</span>
+
+<span class="token section selector"><span class="token punctuation">[</span>Service<span class="token punctuation">]</span></span>
+<span class="token key attr-name">Type</span><span class="token value attr-value"><span class="token punctuation">=</span>simple</span>
+<span class="token key attr-name">ExecStart</span><span class="token value attr-value"><span class="token punctuation">=</span>/root/subconverter/subconverter</span>
+<span class="token key attr-name">WorkingDirectory</span><span class="token value attr-value"><span class="token punctuation">=</span>/root/subconverter</span>
+<span class="token key attr-name">Restart</span><span class="token value attr-value"><span class="token punctuation">=</span>always</span>
+<span class="token key attr-name">RestartSec</span><span class="token value attr-value"><span class="token punctuation">=</span>10</span>
+
+<span class="token section selector"><span class="token punctuation">[</span>Install<span class="token punctuation">]</span></span>
+<span class="token key attr-name">WantedBy</span><span class="token value attr-value"><span class="token punctuation">=</span>multi-user.target</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="检查运行状态以及设置开机自启"><a href="#检查运行状态以及设置开机自启" class="headerlink" title="检查运行状态以及设置开机自启"></a>检查运行状态以及设置开机自启</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">systemctl daemon-reload
+systemctl start sub
+systemctl <span class="token builtin class-name">enable</span> sub
+systemctl status sub<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>到这里，后端就搭建完毕了，接下来我们需要配置反代</p>
+<h2 id="反代配置"><a href="#反代配置" class="headerlink" title="反代配置"></a>反代配置</h2><h3 id="安装nginx"><a href="#安装nginx" class="headerlink" title="安装nginx"></a>安装nginx</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">apt</span> <span class="token function">install</span> nginx<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h3 id="配置反代"><a href="#配置反代" class="headerlink" title="配置反代"></a>配置反代</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">vim</span> /etc/nginx/sites-available/default<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h5 id="找到server节点，修改如下"><a href="#找到server节点，修改如下" class="headerlink" title="找到server节点，修改如下"></a>找到server节点，修改如下</h5><pre class="line-numbers language-text" data-language="text"><code class="language-text">server {
+    listen 80 sub.domain.com;
+    listen [::]:80 sub.domain.com;
+
+    server_name _;
+
+    location / {
+        proxy_pass http://127.0.0.1:25500;
+    }
+}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="前端搭建与配置"><a href="#前端搭建与配置" class="headerlink" title="前端搭建与配置"></a>前端搭建与配置</h2><h3 id="下载并安装-Sub-Web"><a href="#下载并安装-Sub-Web" class="headerlink" title="下载并安装 Sub-Web"></a>下载并安装 Sub-Web</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">git</span> clone https://github.com/CareyWang/sub-web.git
+<span class="token builtin class-name">cd</span> sub-web
+<span class="token function">npm</span> <span class="token function">install</span> <span class="token comment"># 或者 yarn install</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="运行程序"><a href="#运行程序" class="headerlink" title="运行程序"></a>运行程序</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">npm</span> run serve <span class="token comment"># 或者 yarn serve</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h3 id="修改版"><a href="#修改版" class="headerlink" title="修改版"></a>修改版</h3><p>原项目 不支持node18了, 可以用以下项目代替<br><a target="_blank" rel="noopener" href="https://github.com/youshandefeiyang/sub-web-modify">https://suburl.v1.mk</a></p>
+<h3 id="再次修改"><a href="#再次修改" class="headerlink" title="再次修改"></a>再次修改</h3><p>我已经用react重写了, 直接去仓库查找即可 订阅接口使用, 基本上都是使用的这个项目接口<a target="_blank" rel="noopener" href="https://suburl.v1.mk/">https://suburl.v1.mk</a></p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a target="_blank" rel="noopener" href="https://www.mxlong.com/13.html">https://www.mxlong.com/13.html</a></p>
 
                 
             </div>
@@ -308,11 +351,7 @@
                 <div class="post-meta__tag-list" style="display: inline-block;">
                     
                         <div class="article-tag">
-                            
-                                <a href="/tags/css/">
-                                    <span class="chip bg-color">css</span>
-                                </a>
-                            
+                            <span class="chip bg-color">无标签</span>
                         </div>
                     
                 </div>
@@ -357,13 +396,13 @@
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2023/11/02/da-jian-jie-dian-ding-yue-zhuan-huan-fu-wu-qi/">
+                <a href="/2023/11/02/vite-gou-jian-react-xiang-mu/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/7.jpg" class="responsive-img" alt="搭建节点订阅转换服务器">
+                        <img src="/medias/featureimages/6.jpg" class="responsive-img" alt="vite构建React项目">
                         
-                        <span class="card-title">搭建节点订阅转换服务器</span>
+                        <span class="card-title">vite构建React项目</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -394,13 +433,13 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2022/11/21/ru-he-shi-xian-zhan-kai-he-shou-qi-dong-hua/">
+                <a href="/2023/10/24/css-wen-zi-xuan-zhong-xiao-guo/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="如何实现展开和收起动画">
+                        <img src="/medias/featureimages/11.jpg" class="responsive-img" alt="css文字选中效果">
                         
-                        <span class="card-title">如何实现展开和收起动画</span>
+                        <span class="card-title">css文字选中效果</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -411,19 +450,23 @@
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-11-21
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-10-24
                             </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/Javascript/" class="post-category">
-                                    Javascript
-                                </a>
-                            
+                            <i class="fas fa-user fa-fw"></i>
+                            Ponull
                             
                         </span>
                     </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/css/">
+                        <span class="chip bg-color">css</span>
+                    </a>
+                    
                 </div>
                 
             </div>

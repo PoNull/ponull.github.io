@@ -6,7 +6,7 @@
   <link href="http://ponull.github.io/atom.xml" rel="self"/>
   
   <link href="http://ponull.github.io/"/>
-  <updated>2023-11-08T03:38:35.539Z</updated>
+  <updated>2023-11-08T06:02:07.643Z</updated>
   <id>http://ponull.github.io/</id>
   
   <author>
@@ -15,6 +15,27 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Docker安装Discourse论坛/BBS系统</title>
+    <link href="http://ponull.github.io/2023/11/08/docker-an-zhuang-discourse-lun-tan-bbs-xi-tong/"/>
+    <id>http://ponull.github.io/2023/11/08/docker-an-zhuang-discourse-lun-tan-bbs-xi-tong/</id>
+    <published>2023-11-08T03:40:18.000Z</published>
+    <updated>2023-11-08T06:02:07.643Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;要求要大于2G内存, 服务器内存不够的可以&lt;a href=&quot;/2023/11/08/linux-swap-fen-qu-de-chuang-jian-yu-gua-zai/&quot;</summary>
+        
+      
+    
+    
+    
+    
+  </entry>
   
   <entry>
     <title>Linux-swap分区的创建与挂载</title>
@@ -470,30 +491,6 @@
     
     
     <category term="React" scheme="http://ponull.github.io/categories/React/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>PHP Cli模式下获取参数</title>
-    <link href="http://ponull.github.io/2022/05/27/php-cli-mo-shi-xia-huo-qu-can-shu/"/>
-    <id>http://ponull.github.io/2022/05/27/php-cli-mo-shi-xia-huo-qu-can-shu/</id>
-    <published>2022-05-27T09:05:16.000Z</published>
-    <updated>2023-10-24T05:52:45.770Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;作为一个PHPer，却一直嫌弃PHP，其实是自己不够了解PHP，除了异步，你们能做的PHP也能做到&lt;/p&gt;
-&lt;h2 id=&quot;数组-argv&quot;&gt;&lt;a href=&quot;#数组-argv&quot; class=&quot;headerlink&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="PHP" scheme="http://ponull.github.io/categories/PHP/"/>
     
     
   </entry>

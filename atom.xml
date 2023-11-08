@@ -6,7 +6,7 @@
   <link href="http://ponull.github.io/atom.xml" rel="self"/>
   
   <link href="http://ponull.github.io/"/>
-  <updated>2023-11-07T03:13:41.379Z</updated>
+  <updated>2023-11-08T03:38:35.539Z</updated>
   <id>http://ponull.github.io/</id>
   
   <author>
@@ -15,6 +15,28 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Linux-swap分区的创建与挂载</title>
+    <link href="http://ponull.github.io/2023/11/08/linux-swap-fen-qu-de-chuang-jian-yu-gua-zai/"/>
+    <id>http://ponull.github.io/2023/11/08/linux-swap-fen-qu-de-chuang-jian-yu-gua-zai/</id>
+    <published>2023-11-08T03:18:44.000Z</published>
+    <updated>2023-11-08T03:38:35.539Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;创建1G的swap，可以根据你的服务器配置来调整大小 &lt;/p&gt;
+&lt;h2 id=&quot;设置交换分区文件&quot;&gt;&lt;a href=&quot;#设置交换分区文件&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    
+  </entry>
   
   <entry>
     <title>搭建meek协议的梯子</title>
@@ -472,31 +494,6 @@
     
     
     <category term="PHP" scheme="http://ponull.github.io/categories/PHP/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>浅谈Keep-Alive</title>
-    <link href="http://ponull.github.io/2022/05/23/qian-tan-keep-alive/"/>
-    <id>http://ponull.github.io/2022/05/23/qian-tan-keep-alive/</id>
-    <published>2022-05-23T09:37:55.000Z</published>
-    <updated>2023-10-24T05:52:45.746Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;之前开发的时候，经常看见这个header头，一直没有了解为什么可以保持连接，以及保持连接作用，在本书2.7发现答案&lt;/p&gt;
-&lt;p&gt;HTTP 协议的初始版本中，每进行一次 HTTP 通信就要断开一次TCP 连接。&lt;/p&gt;
-&lt;h2 id=&quot;持久连接&quot;&gt;&lt;a</summary>
-        
-      
-    
-    
-    
-    <category term="图解 HTTP" scheme="http://ponull.github.io/categories/%E5%9B%BE%E8%A7%A3-HTTP/"/>
     
     
   </entry>
